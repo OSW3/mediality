@@ -31,47 +31,47 @@ class Evenement
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date_debut;
+    private $dateStart;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date_fin;
+    private $dateEnd;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $categorie;
+    private $category;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $lieu;
+    private $place;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $adresse;
+    private $address;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $nom_contact;
+    private $nameContact;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $mail_contact;
+    private $mailContact;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $phone_contact;
+    private $phoneContact;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $commentaire;
+    private $comment;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -81,11 +81,11 @@ class Evenement
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Commande", mappedBy="evenement")
      */
-    private $commandes;
+    private $orders;
 
     public function __construct()
     {
-        $this->commandes = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -117,110 +117,110 @@ class Evenement
         return $this;
     }
 
-    public function getDateDebut(): ?\DateTimeInterface
+    public function getDateStart(): ?\DateTimeInterface
     {
-        return $this->date_debut;
+        return $this->dateStart;
     }
 
-    public function setDateDebut(\DateTimeInterface $date_debut): self
+    public function setDateStart(\DateTimeInterface $dateStart): self
     {
-        $this->date_debut = $date_debut;
+        $this->dateStart = $dateStart;
 
         return $this;
     }
 
-    public function getDateFin(): ?\DateTimeInterface
+    public function getDateEnd(): ?\DateTimeInterface
     {
-        return $this->date_fin;
+        return $this->dateEnd;
     }
 
-    public function setDateFin(\DateTimeInterface $date_fin): self
+    public function setDateEnd(\DateTimeInterface $dateEnd): self
     {
-        $this->date_fin = $date_fin;
+        $this->dateEnd = $dateEnd;
 
         return $this;
     }
 
-    public function getCategorie(): ?string
+    public function getCategory(): ?string
     {
-        return $this->categorie;
+        return $this->category;
     }
 
-    public function setCategorie(string $categorie): self
+    public function setCategory(string $category): self
     {
-        $this->categorie = $categorie;
+        $this->category = $category;
 
         return $this;
     }
 
-    public function getLieu(): ?string
+    public function getPlace(): ?string
     {
-        return $this->lieu;
+        return $this->place;
     }
 
-    public function setLieu(string $lieu): self
+    public function setPlace(string $place): self
     {
-        $this->lieu = $lieu;
+        $this->place = $place;
 
         return $this;
     }
 
-    public function getAdresse(): ?string
+    public function getAddress(): ?string
     {
-        return $this->adresse;
+        return $this->address;
     }
 
-    public function setAdresse(string $adresse): self
+    public function setAddress(string $address): self
     {
-        $this->adresse = $adresse;
+        $this->address = $address;
 
         return $this;
     }
 
     public function getNomContact(): ?string
     {
-        return $this->nom_contact;
+        return $this->nameContact;
     }
 
-    public function setNomContact(?string $nom_contact): self
+    public function setNomContact(?string $nameContact): self
     {
-        $this->nom_contact = $nom_contact;
+        $this->nameContact = $nameContact;
 
         return $this;
     }
 
     public function getMailContact(): ?string
     {
-        return $this->mail_contact;
+        return $this->mailContact;
     }
 
-    public function setMailContact(?string $mail_contact): self
+    public function setMailContact(?string $mailContact): self
     {
-        $this->mail_contact = $mail_contact;
+        $this->mailContact = $mailContact;
 
         return $this;
     }
 
     public function getPhoneContact(): ?string
     {
-        return $this->phone_contact;
+        return $this->phoneContact;
     }
 
-    public function setPhoneContact(?string $phone_contact): self
+    public function setPhoneContact(?string $phoneContact): self
     {
-        $this->phone_contact = $phone_contact;
+        $this->phoneContact = $phoneContact;
 
         return $this;
     }
 
-    public function getCommentaire(): ?string
+    public function getComment(): ?string
     {
-        return $this->commentaire;
+        return $this->comment;
     }
 
-    public function setCommentaire(?string $commentaire): self
+    public function setComment(?string $comment): self
     {
-        $this->commentaire = $commentaire;
+        $this->comment = $comment;
 
         return $this;
     }
@@ -238,30 +238,30 @@ class Evenement
     }
 
     /**
-     * @return Collection|Commande[]
+     * @return Collection|order[]
      */
-    public function getCommandes(): Collection
+    public function getOrders(): Collection
     {
-        return $this->commandes;
+        return $this->orders;
     }
 
-    public function addCommande(Commande $commande): self
+    public function addOrder(Order $order): self
     {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes[] = $commande;
-            $commande->setEvenement($this);
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->setEvent($this);
         }
 
         return $this;
     }
 
-    public function removeCommande(Commande $commande): self
+    public function removeOrder(Order $order): self
     {
-        if ($this->commandes->contains($commande)) {
-            $this->commandes->removeElement($commande);
+        if ($this->orders->contains($order)) {
+            $this->orders->removeElement($order);
             // set the owning side to null (unless already changed)
-            if ($commande->getEvenement() === $this) {
-                $commande->setEvenement(null);
+            if ($order->getEvent() === $this) {
+                $order->setEvent(null);
             }
         }
 
