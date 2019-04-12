@@ -5,11 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
-class Users
+class Users implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -20,21 +22,43 @@ class Users
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *     min = 3,
+     *     max = 50,
+     *     minMessage = "Le Prénom saisi est trop court",
+     *     maxMessage = "Le Prénom saisi est trop long"
+     * )
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *     min = 2,
+     *     max = 50,
+     *     minMessage = "Le Prénom saisi est trop court",
+     *     maxMessage = "Le Prénom saisi est trop long"
+     * )
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email(
+     *     message = "Email non valide",
+     *     checkMX = true
+     * )
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     */
+    private $password;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Regex("^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$^")
      */
     private $phone;
 
@@ -46,11 +70,11 @@ class Users
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Commande", inversedBy="users")
      */
-    private $commande;
+    private $order;
 
     public function __construct()
     {
-        $this->commande = new ArrayCollection();
+        $this->order = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,6 +118,18 @@ class Users
         return $this;
     }
 
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
     public function getPhone(): ?string
     {
         return $this->phone;
@@ -118,18 +154,41 @@ class Users
         return $this;
     }
 
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function getRoles()
+    {
+        $this->roles[] = $this->getStatus();
+
+        return $this->roles;
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getUsername() {
+
+        return $this->email;
+}
+
+
     /**
      * @return Collection|Commande[]
      */
     public function getCommande(): Collection
     {
-        return $this->commande;
+        return $this->order;
     }
 
     public function addCommande(Commande $commande): self
     {
-        if (!$this->commande->contains($commande)) {
-            $this->commande[] = $commande;
+        if (!$this->order->contains($commande)) {
+            $this->order[] = $commande;
         }
 
         return $this;
@@ -137,8 +196,8 @@ class Users
 
     public function removeCommande(Commande $commande): self
     {
-        if ($this->commande->contains($commande)) {
-            $this->commande->removeElement($commande);
+        if ($this->order->contains($commande)) {
+            $this->order->removeElement($commande);
         }
 
         return $this;

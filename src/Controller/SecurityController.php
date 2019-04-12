@@ -7,13 +7,18 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Form\UserFormType;
 use App\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
     /**
      * @Route("/register", name="register")
      */
-    public function register(Request $request)
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
 
         $user = New Users();
@@ -24,26 +29,41 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
+
             $entityManager = $this->getDoctrine()->getManager();
 
             $entityManager->persist($user);
 
-			$entityManager->flush();
+            $entityManager->flush();
+            
+            return $this->redirectToRoute('login');
 
         }
 
-        return $this->render('security/index.html.twig', [
+        return $this->render('security/register.html.twig', [
             'formRegister' => $form->createView(),
         ]);
     }
 
-    /**
+/**
      * @Route("/login", name="login")
+     * @param Request $request
+     * @return Response
      */
-    public function login()
-    {        
-        return $this->render('security/index.html.twig', [
-            'controller_name' => 'SecurityController',
+    public function login(Request $request, AuthenticationUtils $authenticationUtils)
+    {
+        
+        $form = $this->createFormBuilder()
+            ->add('email', TextType::class)
+            ->add('password', PasswordType::class)
+            ->add('submit', SubmitType::class, ['label'=>'Connexion', 'attr'=>['class'=>'btn-primary btn btn-block']])
+            ->getForm();
+
+
+        return $this->render('security/login.html.twig', [
+            'formLogin' => $form->createView()
         ]);
     }
 
