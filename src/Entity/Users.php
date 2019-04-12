@@ -39,9 +39,9 @@ class Users
     private $phone;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="string", length=255)
      */
-    private $status = [];
+    private $status;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Commande", inversedBy="users")
@@ -106,12 +106,12 @@ class Users
         return $this;
     }
 
-    public function getStatus(): ?array
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    public function setStatus(array $status): self
+    public function setStatus(string $status): self
     {
         $this->status = $status;
 

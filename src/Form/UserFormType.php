@@ -6,6 +6,7 @@ use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class UserFormType extends AbstractType
 {
@@ -16,7 +17,13 @@ class UserFormType extends AbstractType
             ->add('lastname')
             ->add('email')
             ->add('phone')
-            ->add('status')
+            ->add('status', ChoiceType::class, [
+                'choices' => [
+                    'Journaliste' => 'Journaliste',
+                    'Leader' => 'Leader',
+                    'Administrateur' => 'Administrateur'
+                ]
+            ])
         ;
     }
 
