@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -50,6 +52,21 @@ class Commande
      * @ORM\Column(type="datetime")
      */
     private $date_diffusion;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Users", mappedBy="commande")
+     */
+    private $users;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Evenement", inversedBy="commandes")
+     */
+    private $evenement;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -136,6 +153,46 @@ class Commande
     public function setDateDiffusion(\DateTimeInterface $date_diffusion): self
     {
         $this->date_diffusion = $date_diffusion;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Users[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(Users $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(Users $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            $user->removeCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function getEvenement(): ?Evenement
+    {
+        return $this->evenement;
+    }
+
+    public function setEvenement(?Evenement $evenement): self
+    {
+        $this->evenement = $evenement;
 
         return $this;
     }
