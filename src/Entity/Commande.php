@@ -31,12 +31,12 @@ class Commande
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom_demandeur;
+    private $nameApplicant;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date_demande;
+    private $dateRequest;
 
     /**
      * @ORM\Column(type="text")
@@ -46,20 +46,20 @@ class Commande
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date_livraison;
+    private $dateDelivery;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date_diffusion;
+    private $dateDiffusion;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Users", mappedBy="commande")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Users", mappedBy="order")
      */
     private $users;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Evenement", inversedBy="commandes")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Evenement", inversedBy="orders")
      */
     private $evenement;
 
@@ -97,26 +97,26 @@ class Commande
         return $this;
     }
 
-    public function getNomDemandeur(): ?string
+    public function getNameApplicant(): ?string
     {
-        return $this->nom_demandeur;
+        return $this->nameApplicant;
     }
 
-    public function setNomDemandeur(string $nom_demandeur): self
+    public function setNameApplicant(string $nameApplicant): self
     {
-        $this->nom_demandeur = $nom_demandeur;
+        $this->nameApplicant = $nameApplicant;
 
         return $this;
     }
 
-    public function getDateDemande(): ?\DateTimeInterface
+    public function getDateRequest(): ?\DateTimeInterface
     {
-        return $this->date_demande;
+        return $this->dateRequest;
     }
 
-    public function setDateDemande(\DateTimeInterface $date_demande): self
+    public function setDateRequest(\DateTimeInterface $dateRequest): self
     {
-        $this->date_demande = $date_demande;
+        $this->dateRequest = $dateRequest;
 
         return $this;
     }
@@ -133,26 +133,26 @@ class Commande
         return $this;
     }
 
-    public function getDateLivraison(): ?\DateTimeInterface
+    public function getDateDelivery(): ?\DateTimeInterface
     {
-        return $this->date_livraison;
+        return $this->dateDelivery;
     }
 
-    public function setDateLivraison(\DateTimeInterface $date_livraison): self
+    public function setDateDelivery(\DateTimeInterface $dateDelivery): self
     {
-        $this->date_livraison = $date_livraison;
+        $this->dateDelivery = $dateDelivery;
 
         return $this;
     }
 
     public function getDateDiffusion(): ?\DateTimeInterface
     {
-        return $this->date_diffusion;
+        return $this->dateDiffusion;
     }
 
-    public function setDateDiffusion(\DateTimeInterface $date_diffusion): self
+    public function setDateDiffusion(\DateTimeInterface $dateDiffusion): self
     {
-        $this->date_diffusion = $date_diffusion;
+        $this->dateDiffusion = $dateDiffusion;
 
         return $this;
     }
@@ -169,7 +169,7 @@ class Commande
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
-            $user->addCommande($this);
+            $user->addOrder($this);
         }
 
         return $this;
@@ -179,20 +179,20 @@ class Commande
     {
         if ($this->users->contains($user)) {
             $this->users->removeElement($user);
-            $user->removeCommande($this);
+            $user->removeOrder($this);
         }
 
         return $this;
     }
 
-    public function getEvenement(): ?Evenement
+    public function getEvent(): ?Event
     {
-        return $this->evenement;
+        return $this->event;
     }
 
-    public function setEvenement(?Evenement $evenement): self
+    public function setEvent(?Event $event): self
     {
-        $this->evenement = $evenement;
+        $this->event = $event;
 
         return $this;
     }
