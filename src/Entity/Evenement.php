@@ -79,7 +79,7 @@ class Evenement
     private $upload;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Commande", mappedBy="evenement")
+     * @ORM\OneToMany(targetEntity="App\Entity\Commande", mappedBy="event")
      */
     private $orders;
 

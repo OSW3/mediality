@@ -54,7 +54,7 @@ class Commande
     private $dateDiffusion;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Users", mappedBy="commande")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Users", mappedBy="order")
      */
     private $users;
 
