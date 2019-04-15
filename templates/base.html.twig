@@ -5,35 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Mediality :{% block title %}{% endblock %}</title>
-   
 
+
+    {% block stylesheets %}
      <!-- Bootstrap CSS -->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/fonts.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/reboot.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/grid.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/fullcalendar.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/util.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/animation.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/layout.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/color.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/breadcrumb.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/buttons.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/card.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/collapse.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/dropdown.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/modal.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/search.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/stick.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/tab.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/dynatable.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/table.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/waves.css') }}" media="screen">
-    <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/form.css') }}" media="screen">
-
-    {% block stylesheets %}{% endblock %}
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/fonts.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/reboot.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/grid.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/fullcalendar.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/util.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/animation.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/layout.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/color.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/breadcrumb.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/buttons.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/card.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/collapse.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/dropdown.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/modal.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/search.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/stick.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/tab.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/dynatable.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/table.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/waves.css') }}" media="screen">
+        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/form.css') }}" media="screen">
+    {% endblock %}
 </head>
 
 <body>
