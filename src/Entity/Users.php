@@ -74,9 +74,15 @@ class Users implements UserInterface
      */
     private $order;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Team", inversedBy="users")
+     */
+    private $team;
+
     public function __construct()
     {
         $this->order = new ArrayCollection();
+        $this->team = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -200,6 +206,32 @@ class Users implements UserInterface
     {
         if ($this->order->contains($commande)) {
             $this->order->removeElement($commande);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Team[]
+     */
+    public function getTeam(): Collection
+    {
+        return $this->team;
+    }
+
+    public function addTeam(Team $team): self
+    {
+        if (!$this->team->contains($team)) {
+            $this->team[] = $team;
+        }
+
+        return $this;
+    }
+
+    public function removeTeam(Team $team): self
+    {
+        if ($this->team->contains($team)) {
+            $this->team->removeElement($team);
         }
 
         return $this;
