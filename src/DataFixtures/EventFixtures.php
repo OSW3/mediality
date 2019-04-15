@@ -4,7 +4,10 @@ namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use App\entity\Evenement;
+use App\Entity\Evenement;
+use App\Entity\Commande;
+use App\Entity\Team;
+use App\Entity\Users;
 use Faker\Factory;
 
 class EventFixtures extends Fixture
@@ -12,29 +15,73 @@ class EventFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
-        for ($i=1; $i <= 100 ; $i++) { 
+
+        for ($i=1; $i <= 10 ; $i++) { 
             $event = new Evenement();
-            $event->setTitle("Titre de l'evenement $i")
-                    ->setDescription("description de l'evenement n°$i")
+            $event->setTitle($faker->domainWord)
+                    ->setDescription($faker->sentence(16))
                     ->setDateStart($faker->dateTimeBetween('-1 months'))
                     ->setDateEnd($faker->dateTimeBetween('-1 months'))
                     ->setCategory($faker->randomElement([
-                        'Politique', 'Tech', 'Nanar', 'Divers', 'Sport'
+                        'Politique', 'Technologie', 'Science', 'Divers', 'Sport'
                     ]))
                     ->setPlace($faker->randomElement([
-                        'Paris', 'Lille', 'Lion', 'Riens', 'Avignon'
+                        'Paris', 'Lille', 'Lyon', 'Nantes', 'Avignon'
                     ]))
                     ->setAddress($faker->randomElement([
                         '10 rue de la gare', '2 place jean jaures', '15 place rihour', '20 rue de la republique', '43 faubourg de cassel'
                     ]))
                     ->setNameContact($faker->name)
-                    ->setMailContact($faker->email)
-                    ->setPhoneContact("06 12 13 14 15")
-                    ->setComment("Instruction de l'evenement n°$i")
-                    
-                    ;
+                    ->setMailContact($faker->freeEmail)
+                    ->setPhoneContact($faker->phoneNumber)
+                    ->setComment($faker->sentence(46))
+                    ->setUpload($faker->imageUrl(350, 200));
 
             $manager->persist($event);
+
+            for ($j=0; $j < 1; $j++) { 
+
+                $now = new \DateTime();
+                $interval = $now->diff($event->getDateEnd());
+                $days = $interval->days;
+                $minimum = '-'.$days.' days';
+
+                $commande = new Commande();
+                $commande->setEvent($event)
+                         ->setTitle($faker->domainWord)
+                         ->setDescription($faker->sentence(16))
+                         ->setNameApplicant($faker->userName)
+                         ->setObservation($faker->sentence(46))
+                         ->setDateDiffusion($faker->dateTimeBetween($minimum))
+                         ->setDateRequest($faker->dateTimeBetween($minimum))
+                         ->setDateDelivery($faker->dateTimeBetween($minimum));
+
+                    $manager->persist($commande);
+
+                for ($k=0; $k <= 3 ; $k++) { 
+                    $team = new Team();
+                    $team->setName($faker->randomElement([
+                        'Internet', 'Télévision', 'Radio', 'Journal'
+                    ]))
+                        ->setRole("Pizza")
+                        ->setDescription($faker->sentence(46));
+
+                    $manager->persist($team);
+
+                    for ($l=0; $l < 6; $l++) { 
+                        $user = new Users();
+                        $user->setFirstName($faker->firstName)
+                             ->setLastName($faker->lastName)
+                             ->setEmail($faker->freeEmail)
+                             ->setPhone($faker->phoneNumber)
+                             ->setStatus('Journaliste')
+                             ->setPassword('testtest');
+
+                        $manager->persist($user);
+                    }
+                }
+
+            }
 
         }
 
