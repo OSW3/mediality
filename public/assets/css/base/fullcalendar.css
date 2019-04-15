@@ -142,19 +142,19 @@ body .fc {
 
 /* Buttons Groups
 --------------------------------------------------------------------------------------------------*/
-.fc-button-group {
+.-group {
   display: inline-block; }
 
 /*
 every button that is not first in a button group should scootch over one pixel and cover the
 previous button's border...
 */
-.fc .fc-button-group > * {
+.fc .-group > * {
   /* extra precedence b/c buttons have margin set to zero */
   float: left;
   margin: 0 0 0 -1px; }
 
-.fc .fc-button-group > :first-child {
+.fc .-group > :first-child {
   /* same */
   margin-left: 0; }
 

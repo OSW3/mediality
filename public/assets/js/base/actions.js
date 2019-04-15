@@ -1,13 +1,13 @@
-var timer = new Timer({
-    autoStart: config.timer.autoStart,
-    refreshDelay: 1000,
-    showMsec: false,
-    resetOnStop: false,
+// var timer = new Timer({
+//     autoStart: config.timer.autoStart,
+//     refreshDelay: 1000,
+//     showMsec: false,
+//     resetOnStop: false,
 
-    onStop: function(){
-        // alert('Send the last run');
-    }
-});
+//     onStop: function(){
+//         // alert('Send the last run');
+//     }
+// });
 
 
     
