@@ -1,0 +1,23 @@
+.stick {
+    position: relative;
+    margin: 0;
+    z-index: 2;
+    color: #404040;
+}
+.stick.sticked {
+    position: fixed;
+    box-sizing: border-box;
+    z-index: 10;
+}
+.stick.sticked.absolute {
+    position: absolute;
+}
+
+
+
+
+.sidebar .stick.sticked 
+{
+    top: 100px;
+    width: 279px;
+}
