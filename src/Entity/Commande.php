@@ -185,12 +185,12 @@ class Commande
         return $this;
     }
 
-    public function getEvent(): ?Event
+    public function getEvent(): ?Evenement
     {
         return $this->event;
     }
 
-    public function setEvent(?Event $event): self
+    public function setEvent(?Evenement $event): self
     {
         $this->event = $event;
 
