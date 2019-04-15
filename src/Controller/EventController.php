@@ -2,7 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Evenement;
+use App\Form\EventFormType;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class EventController extends AbstractController
@@ -38,7 +43,7 @@ class EventController extends AbstractController
     /**
      * @Route("/event/{id}/edit", name="eventEdit")
      *
-     * @return void
+     * @return Response
      */
     public function eventEdit() {
         return $this->render('event/index.html.twig');
@@ -47,9 +52,25 @@ class EventController extends AbstractController
     /**
      * @Route("/event/create", name="eventCreate")
      *
-     * @return void
+     * @param Request $request
+     * @param ObjectManager $em
+     * @return Response
      */
-    public function eventCreate() {
-        return $this->render('event/index.html.twig');
+    public function eventCreate(Request $request, ObjectManager $em) {
+        $event = new Evenement();
+        $form = $this->createForm(EventFormType::class, $event);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $em->persist($event);
+            $em->flush();
+
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('event/index.html.twig', [
+            'eventForm' => $form->createView()
+        ]);
     }
 }
