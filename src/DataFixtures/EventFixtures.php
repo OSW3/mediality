@@ -47,7 +47,7 @@ class EventFixtures extends Fixture
                 $minimum = '-'.$days.' days';
 
                 $commande = new Commande();
-                $commande->setEvent($event)
+                $commande->setEvenement($event)
                          ->setTitle($faker->domainWord)
                          ->setDescription($faker->sentence(16))
                          ->setNameApplicant($faker->userName)
