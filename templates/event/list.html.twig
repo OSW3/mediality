@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Catégorie</th>
+                <th>Ville</th>
+                <th>Adresse</th>
+                <th>Nom du contact</th>
+                <th>Email du contact</th>
+                <th>Télephone du contact</th>
+                <th>Commentaire</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.id }}</td>
+                    <td>{{ event.title }}</td>
+                    <td>{{ event.description | slice(0, 30) }}</td>
+                    <td>{{ event.dateStart | date('d/m/Y à H:i') }}</td>
+                    <td>{{ event.dateEnd | date('d/m/Y à H:i') }}</td>
+                    <td>{{ event.category }}</td>
+                    <td>{{ event.place }}</td>
+                    <td>{{ event.address }}</td>
+                    <td>{{ event.nameContact }}</td>
+                    <td>{{ event.mailContact }}</td>
+                    <td>{{ event.phoneContact }}</td>
+                    <td>{{ event.comment | slice(0, 15) }}...</td>
+                    <td>
+                        <a href="{{ path('eventEdit', {'id': event.id}) }}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a>
+                        <form class="delete" action="{{ path('eventDelete', {'id': event.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cet évenement?')">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.id) }}">
+                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash-alt"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
