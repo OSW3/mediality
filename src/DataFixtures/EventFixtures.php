@@ -57,32 +57,31 @@ class EventFixtures extends Fixture
                          ->setDateDelivery($faker->dateTimeBetween($minimum));
 
                     $manager->persist($commande);
-
-                for ($k=0; $k <= 3 ; $k++) { 
-                    $team = new Team();
-                    $team->setName($faker->randomElement([
-                        'Internet', 'Télévision', 'Radio', 'Journal'
-                    ]))
-                        ->setRole("Pizza")
-                        ->setDescription($faker->sentence(46));
-
-                    $manager->persist($team);
-
-                    for ($l=0; $l < 6; $l++) { 
-                        $user = new Users();
-                        $user->setFirstName($faker->firstName)
-                             ->setLastName($faker->lastName)
-                             ->setEmail($faker->freeEmail)
-                             ->setPhone($faker->phoneNumber)
-                             ->setStatus('Journaliste')
-                             ->setPassword('testtest');
-
-                        $manager->persist($user);
-                    }
-                }
-
             }
 
+        }
+
+        for ($k=0; $k <= 3 ; $k++) { 
+            $team = new Team();
+            $team->setName($faker->randomElement([
+                'Internet', 'Télévision', 'Radio', 'Journal'
+            ]))
+                ->setRole("Pizza")
+                ->setDescription($faker->sentence(46));
+
+            $manager->persist($team);
+
+            for ($l=0; $l < 6; $l++) { 
+                $user = new Users();
+                $user->setFirstName($faker->firstName)
+                     ->setLastName($faker->lastName)
+                     ->setEmail($faker->freeEmail)
+                     ->setPhone($faker->phoneNumber)
+                     ->setStatus('Journaliste')
+                     ->setPassword('testtest');
+
+                $manager->persist($user);
+            }
         }
 
 
