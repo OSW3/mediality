@@ -1,20 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EventController!{% endblock %}
+{% form_theme eventForm 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello FOX! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/julien_deudon/Sites/mediality/src/Controller/EventController.php'|file_link(0) }}">src/Controller/EventController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/julien_deudon/Sites/mediality/templates/event/index.html.twig'|file_link(0) }}">templates/event/index.html.twig</a></code></li>
-    </ul>
-</div>
+    {{ form_start(eventForm) }}
+        {{ form_widget(eventForm) }}
+    <button class="btn btn-success btn-block">Créer un évenement</button>
+    {{ form_end(eventForm) }}
 {% endblock %}

@@ -61,7 +61,7 @@ class Commande
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Evenement", inversedBy="orders")
      */
-    private $evenement;
+    private $event;
 
     public function __construct()
     {

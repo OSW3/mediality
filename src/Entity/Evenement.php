@@ -177,17 +177,31 @@ class Evenement
         return $this;
     }
 
-    public function getNomContact(): ?string
+    /**
+     * @return mixed
+     */
+    public function getNameContact()
     {
         return $this->nameContact;
     }
 
-    public function setNomContact(?string $nameContact): self
+    /**
+     * @param mixed $nameContact
+     * @return Evenement
+     */
+    public function setNameContact($nameContact): Evenement
     {
         $this->nameContact = $nameContact;
 
         return $this;
     }
+
+    /*public function setNomContact(?string $nameContact): self
+    {
+        $this->nameContact = $nameContact;
+
+        return $this;
+    }*/
 
     public function getMailContact(): ?string
     {
