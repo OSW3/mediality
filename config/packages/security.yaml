@@ -24,7 +24,7 @@ security:
 
             form_login:
                 login_path: login
-                check_path: login
+                check_path: login  
                 username_parameter: "form[email]"
                 password_parameter: "form[password]"
             # https://symfony.com/doc/current/security/form_login_setup.html
