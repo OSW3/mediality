@@ -8,7 +8,6 @@
 <div class="container">
     {{ form_start(formRegister) }}
         {{ form_widget(formRegister, {'attr': {'class': 'task_field'}}) }}
-        {{ form_row(formRegister.status) }}
         <button type="submit" class='btn btn-primary btn-block'>
             {% if updateMode %}
             Enregistrer les modifications

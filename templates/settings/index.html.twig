@@ -4,12 +4,93 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    body{
+        color:white;
+    }
+    h5{
+        text-transform:capitalize;
+    }
+      .btn:before{
+        width: 0px;
+        height: 0px;
+        transform: rotate(0deg);
+      }
 </style>
 
-<div class="example-wrapper">
-    <h1 class="text-center">Mon compte</h1>
-    <a href="{{ path('userUpdate', {'id': app.user.id}) }}">Modifier mon compte</a>
-</div>
+    <div class="container emp-profile col-12">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src="{{ asset('assets/image/profile.png') }}" alt=""/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                                <h5 class="text-center mt-2">
+                                    {{app.user.lastname}} {{app.user.firstname}}
+                                </h5>
+                                <h6 class="text-center">
+                                    {{app.user.status}}
+                                </h6>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+       
+                <div class="col-md-8 mt-3">
+                            <div class="row">
+                                <div class="col-md-6 ">
+                                    <label>User Id</label>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <p>{{app.user.id}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{app.user.lastname}} {{app.user.firstname}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Email</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{app.user.email}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Phone</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{app.user.phone}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Profession</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{app.user.status}}</p>
+                                </div>
+                            </div>
+                </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a class=" bg-success btn btn-success btn-block" href="{{ path('userUpdate', {'id': app.user.id}) }}"><i class="fas fa-edit"></i>Modifier</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a class=" bg-danger btn btn-danger btn-block" href=""><i class="fas fa-trash-alt"></i>Supprimer</a>
+                                </div>
+                            </div>
+        </form>           
+    </div>
+
 {% endblock %}
