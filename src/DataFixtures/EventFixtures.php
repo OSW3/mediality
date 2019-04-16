@@ -15,6 +15,7 @@ class EventFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
+        $teams = ['Internet', 'Télévision', 'Radio', 'Journal'];
 
         for ($i=1; $i <= 10 ; $i++) { 
             $event = new Evenement();
@@ -63,9 +64,7 @@ class EventFixtures extends Fixture
 
         for ($k=0; $k <= 3 ; $k++) { 
                     $team = new Team();
-                    $team->setName($faker->randomElement([
-                        'Internet', 'Télévision', 'Radio', 'Journal'
-                    ]))
+                    $team->setName($teams[$k])
                         ->setRole("Pizza")
                         ->setDescription($faker->sentence(46));
 
