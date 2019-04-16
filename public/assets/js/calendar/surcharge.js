@@ -27,11 +27,17 @@
                         month:    'Mois',
                         week:     'Semaine',
                         day:      'Jour',
-                        list:     'liste'                    
+                        list:     'liste',           
                     },
+                    allDaySlot: true,
+                    lazyFetching: true,
                     firstDay:1,
                     plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
-                    timeZone: 'UTC',
+                    timezone: ('Europe/London'),
+                    
+                     timeFormat: {
+                     agenda: 'hh:mmt'
+                      }       
                 });
                 calendar.render();
                 
