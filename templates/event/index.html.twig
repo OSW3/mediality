@@ -11,8 +11,10 @@
     {% else %}
         <h1>Création d'un évenement</h1>
     {% endif %}
-    {{ form_start(eventForm) }}
-        {{ form_widget(eventForm) }}
+    <div class="formFlex">
+        {{ form_start(eventForm) }}
+            {{ form_widget(eventForm) }}
+    </div>
     <button class="btn btn-success btn-block">
         {% if editMode %}
             Enregistrer les modifications
@@ -21,5 +23,4 @@
         {% endif %}
     </button>
     {{ form_end(eventForm) }}
-
 {% endblock %}

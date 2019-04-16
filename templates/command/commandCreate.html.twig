@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% form_theme formCreateCommand 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+<div class="formFlex">
+    {{ form_start(formCreateCommand) }}
+        {{ form_widget(formCreateCommand) }}
+<div>
+    <button type="submit" class='btn btn-primary btn-block'>Créer une commande</button>
+    {{ form_end(formCreateCommand) }}
+{% endblock %}
