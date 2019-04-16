@@ -7,7 +7,7 @@
     <title>Mediality :{% block title %}{% endblock %}</title>
 
 
-    {% block stylesheets %}
+
      <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -33,8 +33,8 @@
         <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/dynatable.css') }}" media="screen">
         <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/table.css') }}" media="screen">
         <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/waves.css') }}" media="screen">
-        <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/base/form.css') }}" media="screen">
-    {% endblock %}
+
+        {% block stylesheets %}{% endblock %}
 </head>
 
 <body>
