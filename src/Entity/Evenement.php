@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EvenementRepository")
@@ -20,36 +21,42 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $description;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotNull()
      */
     private $dateStart;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotNull()
      */
     private $dateEnd;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $category;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $place;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $address;
 
@@ -177,17 +184,31 @@ class Evenement
         return $this;
     }
 
-    public function getNomContact(): ?string
+    /**
+     * @return mixed
+     */
+    public function getNameContact()
     {
         return $this->nameContact;
     }
 
-    public function setNomContact(?string $nameContact): self
+    /**
+     * @param mixed $nameContact
+     * @return Evenement
+     */
+    public function setNameContact($nameContact): Evenement
     {
         $this->nameContact = $nameContact;
 
         return $this;
     }
+
+    /*public function setNomContact(?string $nameContact): self
+    {
+        $this->nameContact = $nameContact;
+
+        return $this;
+    }*/
 
     public function getMailContact(): ?string
     {

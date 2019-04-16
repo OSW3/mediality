@@ -34,6 +34,8 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $user->setStatus('ROLE_USER');
+
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
 
@@ -42,6 +44,8 @@ class SecurityController extends AbstractController
             $entityManager->persist($user);
 
             $entityManager->flush();
+
+            $this->addFlash('success', 'Votre compte a bien été crée, vous pouvez vous connecter');
             
             return $this->redirectToRoute('login');
 
