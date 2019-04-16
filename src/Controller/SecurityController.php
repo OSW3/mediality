@@ -17,11 +17,16 @@ class SecurityController extends AbstractController
 {
     /**
      * @Route("/register", name="register")
+     * @Route("/settings/{id}/update", name="userUpdate", requirements={"id"="\d+"})
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
-    {
 
-        $user = New Users();
+
+    public function register(Users $user = null,Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        if (!$user) {
+            $user = New Users();
+        }
+       
 
         $form = $this->createForm(UserFormType::class, $user);
 
@@ -44,10 +49,11 @@ class SecurityController extends AbstractController
 
         return $this->render('security/register.html.twig', [
             'formRegister' => $form->createView(),
+            'updateMode'   => $user->getId() !== null
         ]);
     }
 
-/**
+    /**
      * @Route("/login", name="login")
      * @param Request $request
      * @return Response
