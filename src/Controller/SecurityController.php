@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Form\UserFormType;
 use App\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -17,11 +18,16 @@ class SecurityController extends AbstractController
 {
     /**
      * @Route("/register", name="register")
+     * @Route("/settings/{id}/update", name="userUpdate", requirements={"id"="\d+"})
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
-    {
 
-        $user = New Users();
+
+    public function register(Users $user = null,Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        if (!$user) {
+            $user = New Users();
+        }
+       
 
         $form = $this->createForm(UserFormType::class, $user);
 
@@ -47,11 +53,32 @@ class SecurityController extends AbstractController
         }
 
         return $this->render('security/register.html.twig', [
-            'formRegister' => $form->createView()
+            'formRegister' => $form->createView(),
+            'updateMode'   => $user->getId() !== null
         ]);
     }
 
-/**
+
+    /**
+     * @Route("/settings/{id}/delete", name="userDelete")
+     *
+     * @param Evenement $user
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @return Response
+     */
+    public function userDelete(Users $user, Request $request, ObjectManager $manager) {
+        if($this->isCsrfTokenValid('delete'.$user->getId(), $request->get('_token'))){
+            dump($user);
+            $manager->remove($user);
+            $manager->flush();
+        }
+
+        return $this->redirectToRoute('login');
+    }
+
+
+    /**
      * @Route("/login", name="login")
      * @param Request $request
      * @return Response

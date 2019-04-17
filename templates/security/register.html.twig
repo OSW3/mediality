@@ -7,8 +7,14 @@
 {% block body %}
 <div class="container">
     {{ form_start(formRegister) }}
-    {{ form_widget(formRegister, {'attr': {'class': 'task_field'}}) }}
-    <button type="submit" class='btn btn-primary btn-block'>Inscription</button>
+        {{ form_widget(formRegister, {'attr': {'class': 'task_field'}}) }}
+        <button type="submit" class='btn btn-primary btn-block'>
+            {% if updateMode %}
+            Enregistrer les modifications
+            {% else %}
+            Inscription
+            {% endif %}
+        </button>
     {{ form_end(formRegister) }}
 </div>
 {% endblock %}

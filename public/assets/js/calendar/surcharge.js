@@ -1,8 +1,9 @@
 
             document.addEventListener('DOMContentLoaded', () => {
                 var calendarEl = document.getElementById('calendar-holder');
-            
                 var calendar = new FullCalendar.Calendar(calendarEl, {
+                    
+                    locale: 'es',
                     defaultView: 'dayGridMonth',
                     editable: true,
                     eventSources: [
@@ -29,16 +30,15 @@
                         day:      'Jour',
                         list:     'liste',           
                     },
-                    allDaySlot: true,
-                    lazyFetching: true,
+                    
+                    
                     firstDay:1,
                     plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
-                    timezone: ('Europe/London'),
+                    timezone: ('Europe/Paris'),
                     
-                     timeFormat: {
-                     agenda: 'hh:mmt'
-                      }       
+                          
                 });
+                calendar.setOption('locale', 'fr');
                 calendar.render();
                 
                 document.querySelector('.fc-mon').firstChild.innerHTML = 'Lundi';
