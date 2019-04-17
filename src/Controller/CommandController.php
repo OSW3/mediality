@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Commande;
 use App\Form\CommandFormType;
@@ -13,8 +15,11 @@ class CommandController extends AbstractController
 {
     /**
      * @Route("/creer-commande", name="commandCreate")
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @return Response
      */
-    public function commandCreate(Request $request, UsersRepository $usersRepo)
+    public function commandCreate(Request $request, ObjectManager $manager)
     {
 
         $command = new Commande();
@@ -24,7 +29,10 @@ class CommandController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isvalid()) {
-            dump($request);
+            $manager->persist($command);
+            $manager->flush();
+
+            return $this->redirectToRoute('/');
         }
 
 

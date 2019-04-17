@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Commande;
+use App\Repository\TeamRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,13 +25,12 @@ class CommandFormType extends AbstractType
             ->add('dateDiffusion')
             ->add('users', EntityType::class, [
                 'class' => Users::class,
-                'choice_label'=>'firstname',
-                'expanded'=>true,
-                'multiple'=>true
-            ])
-            ->add('users', EntityType::class, [
-                'class' => Users::class,
-                'choice_label'=>'firstname',
+                'choice_label'=>function (Users $users) {
+                    foreach ($users->getTeam() as $user){
+                        return  $users->getFirstname().' (Team '.$user->getName().') ';
+                    }
+                    }
+                    ,
                 'expanded'=>true,
                 'multiple'=>true
             ])
