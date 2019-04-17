@@ -30,7 +30,9 @@ class CommandController extends AbstractController
             $manager->persist($command);
             $manager->flush();
 
-            return $this->redirectToRoute('/');
+            $this->addFlash('success', 'La commande a bien été crée');
+
+            return $this->redirectToRoute('home');
         }
 
 
