@@ -17,10 +17,6 @@ class CommandController extends AbstractController
     public function commandCreate(Request $request, UsersRepository $usersRepo)
     {
 
-        $usersList = $usersRepo->findAllByTeam();
-
-        dump($usersList);
-
         $command = new Commande();
         
         $form = $this->createForm(CommandFormType::class, $command);

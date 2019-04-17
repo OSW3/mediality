@@ -38,21 +38,6 @@ class UsersRepository extends ServiceEntityRepository
     }
     */
 
-    public function findAllByTeam()
-    {
-        // return $this->createQueryBuilder('u')
-        //     ->innerJoin('u.team', 't')
-        //     ->where('t.id = :team_id')
-        //     ->setParameter('team_id', 'team_id')
-        //     ->getQuery()->getResult();
-
-        $conn = $this->getEntityManager()->getConnection();
-
-        $query = $conn->query('SELECT `users`.firstname , `team`.name  FROM `users` INNER JOIN `users_team` ON `users`.`id` = `users_team`.`users_id` INNER JOIN `team` ON `team`.`id` = `users_team`.`team_id`');
-
-        return $query->fetchAll();
-    }
-
     /*
     public function findOneBySomeField($value): ?Users
     {
