@@ -25,9 +25,7 @@ class CommandController extends AbstractController
         $command = new Commande();
         
         $form = $this->createForm(CommandFormType::class, $command);
-
         $form->handleRequest($request);
-
         if($form->isSubmitted() && $form->isvalid()) {
             $manager->persist($command);
             $manager->flush();

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %}Event{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ event.id }}</td>
+        </tr>
+        <tr>
+            <th>Date de début</th>
+            <td>{{ event.dateStart ? event.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Date de fin</th>
+            <td>{{ event.dateEnd ? event.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Titre</th>
+            <td>{{ event.title }}</td>
+        </tr><tr>
+            <th>Description</th>
+            <td>{{ event.description }}</td>
+        </tr><tr>
+            <th>Category</th>
+            <td>{{ event.category }}</td>
+        </tr><tr>
+            <th>Lieu</th>
+            <td>{{ event.place }}</td>
+        </tr><tr>
+            <th>Adresse</th>
+            <td>{{ event.address }}</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
