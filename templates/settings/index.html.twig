@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SettingsController!{% endblock %}
+{% block title %}Mon compte{% endblock %}
 
 {% block body %}
 <style>
@@ -18,11 +18,10 @@
 </style>
 
     <div class="container emp-profile col-12">
-        <form method="post">
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-img">
-                        <img src="{{ asset('assets/image/profile.png') }}" alt=""/>
+                        <img class="img-fluid rounded-circle" src="{{ asset('assets/image/profile.png') }}" alt=""/>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -87,10 +86,13 @@
                                     <a class=" bg-success btn btn-success btn-block" href="{{ path('userUpdate', {'id': app.user.id}) }}"><i class="fas fa-edit"></i>Modifier</a>
                                 </div>
                                 <div class="col-md-6">
-                                    <a class=" bg-danger btn btn-danger btn-block" href=""><i class="fas fa-trash-alt"></i>Supprimer</a>
+                                    <form class="delete" action="{{ path('userDelete', {'id': app.user.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer votre compte?')">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ app.user.id) }}">
+                                            <button type="submit" class="bg-danger btn btn-danger btn-block"><i class="fas fa-trash-alt"></i>Supprimer</button>
+                                    </form>   
                                 </div>
                             </div>
-        </form>           
+            
+          
     </div>
-
 {% endblock %}

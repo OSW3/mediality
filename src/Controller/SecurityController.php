@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Form\UserFormType;
 use App\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -56,6 +57,26 @@ class SecurityController extends AbstractController
             'updateMode'   => $user->getId() !== null
         ]);
     }
+
+
+    /**
+     * @Route("/settings/{id}/delete", name="userDelete")
+     *
+     * @param Evenement $user
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @return Response
+     */
+    public function userDelete(Users $user, Request $request, ObjectManager $manager) {
+        if($this->isCsrfTokenValid('delete'.$user->getId(), $request->get('_token'))){
+            dump($user);
+            $manager->remove($user);
+            $manager->flush();
+        }
+
+        return $this->redirectToRoute('login');
+    }
+
 
     /**
      * @Route("/login", name="login")
