@@ -188,12 +188,12 @@ class Users implements UserInterface
     /**
      * @return Collection|Commande[]
      */
-    public function getCommande(): Collection
+    public function getOrder(): Collection
     {
         return $this->order;
     }
 
-    public function addCommande(Commande $commande): self
+    public function addOrder(Commande $commande): self
     {
         if (!$this->order->contains($commande)) {
             $this->order[] = $commande;
@@ -202,7 +202,7 @@ class Users implements UserInterface
         return $this;
     }
 
-    public function removeCommande(Commande $commande): self
+    public function removeOrder(Commande $commande): self
     {
         if ($this->order->contains($commande)) {
             $this->order->removeElement($commande);

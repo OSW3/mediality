@@ -23,6 +23,7 @@ class CommandController extends AbstractController
     {
 
         $command = new Commande();
+        dump($command);
         
         $form = $this->createForm(CommandFormType::class, $command);
 
@@ -32,7 +33,7 @@ class CommandController extends AbstractController
             $manager->persist($command);
             $manager->flush();
 
-            return $this->redirectToRoute('/');
+            return $this->redirectToRoute('home');
         }
 
 

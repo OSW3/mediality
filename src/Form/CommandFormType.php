@@ -38,7 +38,7 @@ class CommandFormType extends AbstractType
                 'class'=> Evenement::class,
                 'choice_label'=>'title',
                 'expanded'=>true,
-                'multiple'=>true
+                'multiple'=>false
             ])
         ;
     }
