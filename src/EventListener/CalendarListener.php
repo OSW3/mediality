@@ -2,29 +2,56 @@
 
 namespace App\EventListener;
 
+use App\Repository\EvenementRepository;
 use CalendarBundle\Entity\Event;
 use CalendarBundle\Event\CalendarEvent;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class CalendarListener
 {
+    private $eventRepository;
+    private $router;
+
+    public function __construct(EvenementRepository $eventRepository, UrlGeneratorInterface $router)
+    {
+        $this->router = $router;
+        $this->eventRepository = $eventRepository;
+    }
+
     public function load(CalendarEvent $calendar)
     {
         $start = $calendar->getStart();
         $end = $calendar->getEnd();
         $filters = $calendar->getFilters();
 
-        // You may want to make a custom query to fill the calendar
+        $events = $this->eventRepository
+            ->createQueryBuilder('e')
+            ->where('e.dateStart BETWEEN :start and :end')
+            ->setParameter('start', $start->format('Y-m-d H:i:s'))
+            ->setParameter('end', $end->format('Y-m-d H:i:s'))
+            ->getQuery()
+            ->getResult()
+        ;
+        foreach ($events as $event) {
+            // this create the events with your data (here booking data) to fill calendar
+            $mediaEvent = new Event(
+                $event->getTitle(),
+                $event->getDateStart(),
+                $event->getDateEnd() // If the end date is null or not defined, a all day event is created.
+            );
+            $mediaEvent->setOptions([
+                'backgroundColor' => 'red',
+                'borderColor' => 'red',
+            ]);
+            $mediaEvent->addOption(
+                'url',
+                $this->router->generate('eventSingle', [
+                    'id' => $event->getId(),
+                ])
+            );
 
-        $calendar->addEvent(new Event(
-            'Event 1',
-            new \DateTime('Tuesday this week'),
-            new \DateTime('Wednesdays this week')
-        ));
-
-        // If the end date is null or not defined, it creates a all day event
-        $calendar->addEvent(new Event(
-            'All day event',
-            new \DateTime('Friday this week')
-        ));
+            // finally, add the event to the CalendarEvent to fill the calendar
+            $calendar->addEvent($mediaEvent);
+        }
     }
 }

@@ -37,8 +37,7 @@ class CommandFormType extends AbstractType
             ->add('event', EntityType::class, [
                 'class'=> Evenement::class,
                 'choice_label'=>'title',
-                'expanded'=>true,
-                'multiple'=>true
+                'expanded'=>true
             ])
         ;
     }

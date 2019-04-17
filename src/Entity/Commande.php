@@ -54,7 +54,7 @@ class Commande
     private $dateDiffusion;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Users", mappedBy="order")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Users", inversedBy="order")
      */
     private $users;
 
@@ -169,7 +169,6 @@ class Commande
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
-            $user->addOrder($this);
         }
 
         return $this;
@@ -179,7 +178,6 @@ class Commande
     {
         if ($this->users->contains($user)) {
             $this->users->removeElement($user);
-            $user->removeOrder($this);
         }
 
         return $this;
