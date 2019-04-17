@@ -23,6 +23,7 @@ class CommandController extends AbstractController
     {
 
         $command = new Commande();
+        dump($command);
         
         $form = $this->createForm(CommandFormType::class, $command);
         $form->handleRequest($request);
