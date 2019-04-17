@@ -9,7 +9,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Users;
 use App\Entity\Evenement;
-use App\Entity\Team;
 
 class CommandFormType extends AbstractType
 {
@@ -30,8 +29,8 @@ class CommandFormType extends AbstractType
                 'multiple'=>true
             ])
             ->add('users', EntityType::class, [
-                'class' => Team::class,
-                'choice_label'=>'name',
+                'class' => Users::class,
+                'choice_label'=>'firstname',
                 'expanded'=>true,
                 'multiple'=>true
             ])
@@ -39,7 +38,7 @@ class CommandFormType extends AbstractType
                 'class'=> Evenement::class,
                 'choice_label'=>'title',
                 'expanded'=>true,
-                'multiple'=>true,
+                'multiple'=>true
             ])
         ;
     }

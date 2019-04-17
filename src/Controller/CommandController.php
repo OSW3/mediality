@@ -7,13 +7,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Commande;
 use App\Form\CommandFormType;
 use Symfony\Component\HttpFoundation\Request;
+use App\Repository\UsersRepository;
 
 class CommandController extends AbstractController
 {
     /**
      * @Route("/creer-commande", name="commandCreate")
      */
-    public function commandCreate(Request $request)
+    public function commandCreate(Request $request, UsersRepository $usersRepo)
     {
 
         $command = new Commande();
