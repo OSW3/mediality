@@ -4,19 +4,104 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>TEAM✅</h1>
+        ul{
+          margin:0;
+          padding:0;
+          list-style:none;
+        }
+       
+        .padding-lg {
+            display: block;
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+
+        .our-webcoderskull .cnt-block:hover {
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+            border: 0;
+        }
+        
+        .our-webcoderskull{
+          background: #3498db;
+          border-radius: 20px;
+          margin-bottom: 10px;
+          
+        }
+        .our-webcoderskull .cnt-block{ 
+           float:left; 
+           width:100%; 
+           background:#fff; 
+           padding:30px 20px; 
+           text-align:center; 
+           border:2px solid #d5d5d5;
+           margin: 0 0 28px;
+        }
+        .our-webcoderskull .cnt-block figure{
+           width:148px; 
+           height:148px; 
+           border-radius:100%; 
+           display:inline-block;
+           margin-bottom: 15px;
+        }
+        .our-webcoderskull .cnt-block img{ 
+           width:148px; 
+           height:148px; 
+           border-radius:100%; 
+        }
+        .our-webcoderskull .cnt-block h3{ 
+           color:#2a2a2a; 
+           font-size:20px; 
+           font-weight:500; 
+           padding:6px 0;
+           text-transform:uppercase;
+        }
+        .our-webcoderskull .cnt-block h3 a{
+          text-decoration:none;
+            color:#2a2a2a;
+        }
+        .our-webcoderskull .cnt-block h3 a:hover{
+            color:#337ab7;
+        }
+        .our-webcoderskull .cnt-block p{ 
+           color:#2a2a2a; 
+           font-size:13px; 
+           line-height:20px; 
+           font-weight:400;
+        }
+       
+        
+</style>
     {% for team in team %}
-    <tr>
-        <td>{{ team.id }}</td><br>
-        <td>{{ team.name }}</td><br>
-        <td>{{ team.role }}</td> <br>  
-        <td>{{ team.description }}</td><br>
-    </tr>
+
+       <section class="our-webcoderskull padding-lg">
+            <div class="container">
+              <div class="row heading heading-icon">
+                  <h2 class="text-white d-block mx-auto">Team {{ team.name }}</h2>
+                  <p class="p-5 text-white"> {{ team.description }}</p>
+              </div>
+              <ul class="row">
+                
+                    {% for user in team.users %}
+                       
+                       
+                            <li class="col-12 col-md-6 col-lg-3">
+                                <div class="cnt-block equal-hight" style="height: 349px;">
+                                  <figure><img src="http://www.webcoderskull.com/img/team4.png" class="img-responsive" alt=""></figure>
+                                  <h3><a href="">{{ user.firstname }}</a></h3>
+                                  <p>{{ user.status }}</p>
+                                  <a class="mr-3" href="mailto:{{ user.email }}"><i class="fas fa-envelope"></i></a>
+                                  <a href="tel:{{ user.phone }}"><i class="fas fa-phone"></i></a>
+                                </div>
+                            </li>
+                          
+                          
+                    {% endfor %}
+    
+
+   
+                </ul>
+            </div>
+          </section>
 {% endfor %}
-</div>
 {% endblock %}
