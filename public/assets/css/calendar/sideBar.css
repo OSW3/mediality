@@ -9,7 +9,7 @@
 
 .sidebar
 {
-    width: 280px;
+    width: 19%;
     height: calc(100% - 100px);
     padding: 0.5rem;
     left: 62px;
@@ -69,8 +69,7 @@
 }
 
 .toggle_btn2-open{
-    width: 1rem;
-    padding-left: 260px;
+    padding-left: 20%;
     padding-top: 0.5rem;
     -webkit-transition: all .3s;
     transition: all .3s;
@@ -78,7 +77,7 @@
 
 .toggle_btn2-close{
 
-    padding-left: 35px;
+    padding-left: 0.5%;
     padding-top: 0.5rem;
     -webkit-transition: all .3s;
             transition: all .3s;
