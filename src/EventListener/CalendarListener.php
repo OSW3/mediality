@@ -2,6 +2,7 @@
 
 namespace App\EventListener;
 
+use App\Repository\CommandeRepository;
 use App\Repository\EvenementRepository;
 use CalendarBundle\Entity\Event;
 use CalendarBundle\Event\CalendarEvent;
@@ -10,12 +11,14 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class CalendarListener
 {
     private $eventRepository;
+    private $orderRepository;
     private $router;
 
-    public function __construct(EvenementRepository $eventRepository, UrlGeneratorInterface $router)
+    public function __construct(EvenementRepository $eventRepository, CommandeRepository $orderRepository, UrlGeneratorInterface $router)
     {
         $this->router = $router;
         $this->eventRepository = $eventRepository;
+        $this->orderRepository = $orderRepository;
     }
 
     public function load(CalendarEvent $calendar)
@@ -27,6 +30,14 @@ class CalendarListener
         $events = $this->eventRepository
             ->createQueryBuilder('e')
             ->where('e.dateStart BETWEEN :start and :end')
+            ->setParameter('start', $start->format('Y-m-d H:i:s'))
+            ->setParameter('end', $end->format('Y-m-d H:i:s'))
+            ->getQuery()
+            ->getResult()
+        ;
+        $orders = $this->orderRepository
+            ->createQueryBuilder('o')
+            ->where('o.dateDelivery BETWEEN :start and :end')
             ->setParameter('start', $start->format('Y-m-d H:i:s'))
             ->setParameter('end', $end->format('Y-m-d H:i:s'))
             ->getQuery()
@@ -49,9 +60,28 @@ class CalendarListener
                     'id' => $event->getId(),
                 ])
             );
-
             // finally, add the event to the CalendarEvent to fill the calendar
             $calendar->addEvent($mediaEvent);
         }
+        foreach ($orders as $order) {
+            // this create the events with your data (here booking data) to fill calendar
+            $mediaOrder = new Event(
+                $order->getTitle(),
+                $order->getDateDelivery(),
+                $order->getDateDiffusion() // If the end date is null or not defined, a all day event is created.
+            );
+            $mediaOrder->setOptions([
+                'backgroundColor' => 'blue',
+                'borderColor' => 'blue',
+            ]);
+            $mediaOrder->addOption(
+                'url',
+                $this->router->generate('orderSingle', [
+                    'id' => $order->getId(),
+                ])
+            );
+            $calendar->addEvent($mediaOrder);
+        }
+
     }
 }

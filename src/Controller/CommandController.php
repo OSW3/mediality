@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CommandeRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,11 +46,28 @@ class CommandController extends AbstractController
 
     /**
      * @Route("/liste-commandes", name="commandView")
+     * @param CommandeRepository $ordersRepository
+     * @return Response
      */
-    public function commandView()
+    public function commandView(CommandeRepository $ordersRepository)
     {
+        $orders = $ordersRepository->findAll();
+
         return $this->render('command/index.html.twig', [
-            'controller_name' => 'CommandController',
+            'orders' => $orders,
+        ]);
+    }
+
+    /**
+     * @Route("/order/{id}", name="orderSingle", requirements={"id"= "\d+"})
+     *
+     * @param Commande $order
+     * @return Response
+     */
+    public function orderShow(Commande $order)
+    {
+        return $this->render('command/show.html.twig', [
+            'order' => $order
         ]);
     }
 }
