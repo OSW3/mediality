@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block title %}Commande{% endblock %}
+
+{% block body %}
+    <h1>Commande pour l'évenement : {{ order.event.title}}</h1>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ order.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ order.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ order.description }}</td>
+            </tr>
+            <tr>
+                <th>Observation</th>
+                <td>{{ order.observation }}</td>
+            </tr>
+            <tr>
+                <th>Date de la création de la commande</th>
+                <td>{{ order.dateRequest | date('d / m / Y') }}</td>
+            </tr>
+            <tr>
+                <th>Date de livraison</th>
+                <td>{{ order.dateDelivery | date('d / m / Y') }}</td>
+            </tr>
+            <tr>
+                <th>Date de diffusion</th>
+                <td>{{ order.dateDiffusion | date('d / m / Y') }}</td>
+            </tr>
+            <tr>
+                <th>Journalistes concernée par la commande</th>
+                <td>{% for users in order.users %}
+                        {{ users.firstname }} {{ users.lastname | upper }} ,
+                {% endfor %}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

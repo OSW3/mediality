@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Team{% endblock %}
+
+{% block body %}
+
+{% for team in team %}
+
+       <section class="our-webcoderskull padding-lg">
+            <div class="container">
+              <div class="row heading heading-icon">
+                  <h2 class="text-white d-block mx-auto">Team {{ team.name }}</h2>
+                  <p class="p-5 text-white"> {{ team.description }}</p>
+              </div>
+              <ul class="row">               
+                    {% for user in team.users %}              
+                        <li class="col-12 col-md-6 col-lg-3">
+                            <div class="cnt-block equal-hight" style="height: 349px;">
+                                <figure><img src="http://www.webcoderskull.com/img/team4.png" class="img-responsive" alt="photo de profil"></figure>
+                                <h3><a href="">{{ user.firstname }}</a></h3>
+                                <p>{{ user.status }}</p>
+                                <a class="mr-3" href="mailto:{{ user.email }}"><i class="fas fa-envelope"></i></a>
+                                <a href="tel:{{ user.phone }}"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </li>           
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    {% endfor %}
+{% endblock %}

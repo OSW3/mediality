@@ -35,11 +35,7 @@
                     <td>{{ event.phoneContact }}</td>
                     <td>{{ event.comment | slice(0, 15) }}...</td>
                     <td>
-                        <a href="{{ path('eventEdit', {'id': event.id}) }}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a>
-                        <form class="delete" action="{{ path('eventDelete', {'id': event.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cet évenement?')">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.id) }}">
-                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash-alt"></i></button>
-                        </form>
+                        <a href="{{ path('eventSingle', {'id': event.id}) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                     </td>
                 </tr>
             {% endfor %}

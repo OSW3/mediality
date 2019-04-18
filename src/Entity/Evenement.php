@@ -93,6 +93,8 @@ class Evenement
     public function __construct()
     {
         $this->orders = new ArrayCollection();
+        $this->setDateStart(new \DateTime('now'));
+        $this->setDateEnd(new \DateTime('now'));
     }
 
     public function getId(): ?int
@@ -259,14 +261,14 @@ class Evenement
     }
 
     /**
-     * @return Collection|order[]
+     * @return Collection|Commande[]
      */
     public function getOrders(): Collection
     {
         return $this->orders;
     }
 
-    public function addOrder(Order $order): self
+    public function addOrder(Commande $order): self
     {
         if (!$this->orders->contains($order)) {
             $this->orders[] = $order;
@@ -276,7 +278,7 @@ class Evenement
         return $this;
     }
 
-    public function removeOrder(Order $order): self
+    public function removeOrder(Commande $order): self
     {
         if ($this->orders->contains($order)) {
             $this->orders->removeElement($order);

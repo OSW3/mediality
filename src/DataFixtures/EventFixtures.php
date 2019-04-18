@@ -16,6 +16,7 @@ class EventFixtures extends Fixture
     {
         $faker = Factory::create('fr_FR');
         $teams = ['Internet', 'Télévision', 'Radio', 'Journal'];
+        $commandes = [];
 
         for ($i=1; $i <= 10 ; $i++) { 
             $event = new Evenement();
@@ -57,6 +58,8 @@ class EventFixtures extends Fixture
                          ->setDateRequest($faker->dateTimeBetween($minimum))
                          ->setDateDelivery($faker->dateTimeBetween($minimum));
 
+                        array_push($commandes, $commande);
+
                     $manager->persist($commande);
             }
 
@@ -77,7 +80,12 @@ class EventFixtures extends Fixture
                              ->setEmail($faker->freeEmail)
                              ->setPhone($faker->phoneNumber)
                              ->setStatus('Journaliste')
-                             ->setPassword('testtest');
+                             ->setPassword('testtest')
+                             ->addTeam($team);
+                             foreach ($commandes as $commande) {
+                                 $user->addOrder($commande);
+                             }
+
 
                         $manager->persist($user);
                     }

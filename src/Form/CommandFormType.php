@@ -3,13 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Commande;
+use App\Repository\TeamRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Users;
 use App\Entity\Evenement;
-use App\Entity\Team;
 
 class CommandFormType extends AbstractType
 {
@@ -19,19 +19,18 @@ class CommandFormType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('nameApplicant')
-            ->add('dateRequest')
+            //->add('dateRequest')
             ->add('observation')
             ->add('dateDelivery')
             ->add('dateDiffusion')
             ->add('users', EntityType::class, [
                 'class' => Users::class,
-                'choice_label'=>'firstname',
-                'expanded'=>true,
-                'multiple'=>true
-            ])
-            ->add('users', EntityType::class, [
-                'class' => Team::class,
-                'choice_label'=>'name',
+                'choice_label'=>function (Users $users) {
+                    foreach ($users->getTeam() as $user){
+                        return  $users->getFirstname().' (Team '.$user->getName().') ';
+                    }
+                    }
+                    ,
                 'expanded'=>true,
                 'multiple'=>true
             ])
@@ -39,7 +38,7 @@ class CommandFormType extends AbstractType
                 'class'=> Evenement::class,
                 'choice_label'=>'title',
                 'expanded'=>true,
-                'multiple'=>true,
+                'multiple'=>false
             ])
         ;
     }

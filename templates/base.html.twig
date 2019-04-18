@@ -46,7 +46,7 @@
                                         <img src="{{asset('assets/image/team.png')}}" class="team-picture">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#/?page=settings&amp;main=profile">
+                                        <a class="dropdown-item" href="{{path('singleTeam',{'team': 'journal' })}}">
                                             <div class="dropdown-item-icon">
                                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -163,9 +163,8 @@
                             </svg>
                         </a>
                     </li>
-
                     <li>
-                        <a href="#" title="Créer un événement">
+                        <a href="{{path('eventCreate')}}" title="Créer un événement">
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 59 59"
                                 style="enable-background:new 0 0 59 59;" xml:space="preserve">
@@ -177,7 +176,7 @@
                     </li>
 
                     <li>
-                        <a href="#" title="Consulter les événements">
+                        <a href="{{path('event')}}" title="Consulter les événements">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
 <g>
@@ -197,7 +196,7 @@
                     </li>
 
                     <li>
-                        <a href="#" title="Affecter une tâche">
+                        <a href="{{path('commandCreate')}}" title="Affecter une tâche">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
 <g>
@@ -238,7 +237,7 @@
                     </li>
 
                     <li>
-                        <a href="#" title="Consulter les tâches">
+                        <a href="{{path('commandView')}}" title="Consulter les tâches">
                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 59.018 59.018" style="enable-background:new 0 0 59.018 59.018;" xml:space="preserve">
 <g>

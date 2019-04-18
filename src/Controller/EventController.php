@@ -30,10 +30,14 @@ class EventController extends AbstractController
     /**
      * @Route("/event/{id}", name="eventSingle", requirements={"id"= "\d+"})
      *
-     * @return void
+     * @param Evenement $event
+     * @return Response
      */
-    public function eventShow() {
-        return $this->render('event/index.html.twig');
+    public function eventShow(Evenement $event)
+    {
+        return $this->render('event/show.html.twig', [
+            'event' => $event
+        ]);
     }
 
     /**
