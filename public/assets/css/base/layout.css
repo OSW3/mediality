@@ -81,7 +81,6 @@
     top: 100px;
     bottom: 40px;
 
-    overflow-x: scroll !important;
     z-index: 1 !important;
 }
 .navbar-footer
@@ -91,27 +90,8 @@
     z-index: 2 !important;
 }
 
-
-.sidebar
-{
-    width: 280px;
-    height: calc(100% - 100px);
-    
-    top: 60px;
-    left: 62px;
-    /* left: -280px; */
-    
-    overflow-x: auto !important;
-    z-index: 2 !important;
-
-    -webkit-transition: all .3s;
-            transition: all .3s;
-}
-
 .workspace
 {
-    padding: 1rem;
-
     top: 60px;
     right: 0;
     bottom: 0;
@@ -125,18 +105,6 @@
     -webkit-transition: all .3s;
             transition: all .3s;
 }
-
-
-/* Toggle sidebar */
-.sidebar-hidden .sidebar
-{
-    left: -218px;
-}
-.sidebar-hidden .workspace
-{
-    left: 62px;
-}
-
 .toolbar > .col-left > .actions > .flex-right
 {
     opacity: 1;

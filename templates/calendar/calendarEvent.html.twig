@@ -8,64 +8,40 @@
 <link rel="stylesheet" href="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.css">
 <link rel="stylesheet" href="https://fullcalendar.io/releases/timegrid/4.0.1/main.min.css">
 <link rel="stylesheet" href="{{ asset('assets/css/calendar/surcharge.css') }}">
-<link rel="stylesheet" href="{{asset('assets/css/calendar/calendar.css')}}">
-
+<link rel="stylesheet" href="{{ asset('assets/css/calendar/calendar.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/calendar/sideBar.css')}}">
 {% endblock %}
 
 {% block body %}
-{% for message in app.flashes('success') %}
-    <div class="alert alert-success">
-        {{ message }}
+    <div class="content">
+    <!--         SIDEBAR            -->   
+        
+    <div class="sidebar-header">
+        <div class="toggle_btn2-open">
+            <a href="#" class="toggle_btn" >
+                <img class="icon-filter" src="{{ asset('assets/image/logo_svg/cancel-music.svg') }}">   
+                </img>
+            </a>
+        </div>
     </div>
-{% endfor %}
-
-{% include '@Calendar/calendar.html' %}
-
+    <div class="sidebar">
+        
+    </div>
+        <div class=" spaceCalendar">
+            {% include '@Calendar/calendar.html' %}
+        </div>
+        
+    </div>
+    
+        
 {% endblock %}
 
 {% block javascripts %}
-<script src="https://fullcalendar.io/releases/core/4.0.1/main.min.js"></script>
-<script src="https://fullcalendar.io/releases/interaction/4.0.1/main.min.js"></script>
-<script src="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.js"></script>
-<script src="https://fullcalendar.io/releases/timegrid/4.0.1/main.min.js"></script>
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', () => {
-        var calendarEl = document.getElementById('calendar-holder');
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            defaultView: 'dayGridMonth',
-            editable: true,
-            eventSources: [{
-                url: "{{ path('fc_load_events') }}",
-                type: "POST",
-                data: {
-                    filters: {},
-                },
-                error: () => {
-                    // alert("There was an error while fetching FullCalendar!");
-                },
-            }, ],
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay',
-            },
-            plugins: ['interaction', 'dayGrid',
-            'timeGrid'], // https://fullcalendar.io/docs/plugin-index
-            timeZone: 'UTC',
-
-            buttonText: {
-                today: "Aujourd'hui",
-                month: 'Mois',
-                week: 'Semaine',
-                day: 'Jour',
-                list: 'liste',
-            },
-        });
-        calendar.setOption('locale', 'fr');
-        calendar.render();
-    });
-</script>
-
+    <script src="https://fullcalendar.io/releases/core/4.0.1/main.min.js"></script>
+    <script src="https://fullcalendar.io/releases/interaction/4.0.1/main.min.js"></script>
+    <script src="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.js"></script>
+    <script src="https://fullcalendar.io/releases/timegrid/4.0.1/main.min.js"></script>     
+    <script src="{{ asset('assets/js/calendar/surcharge.js') }}"></script>
+    <script src="{{ asset('assets/js/calendar/sideBar.js') }}"></script>
 
 {% endblock %}
