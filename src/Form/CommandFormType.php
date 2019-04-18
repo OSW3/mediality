@@ -19,7 +19,7 @@ class CommandFormType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('nameApplicant')
-            ->add('dateRequest')
+            //->add('dateRequest')
             ->add('observation')
             ->add('dateDelivery')
             ->add('dateDiffusion')

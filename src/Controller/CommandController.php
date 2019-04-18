@@ -26,6 +26,7 @@ class CommandController extends AbstractController
         dump($command);
         
         $form = $this->createForm(CommandFormType::class, $command);
+
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isvalid()) {
             $manager->persist($command);

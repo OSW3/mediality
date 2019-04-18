@@ -93,6 +93,8 @@ class Evenement
     public function __construct()
     {
         $this->orders = new ArrayCollection();
+        $this->setDateStart(new \DateTime('now'));
+        $this->setDateEnd(new \DateTime('now'));
     }
 
     public function getId(): ?int
