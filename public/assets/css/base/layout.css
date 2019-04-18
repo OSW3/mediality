@@ -26,11 +26,18 @@
 .topbar-header
 {
     font-family: 'Myriad Pro';
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     
     line-height: 60px;
-    padding-left: 20px;
+    padding-left: 63px;
 }
+
+.brand-title
+{
+    padding-left: 5px;
+}
+
+
 .topbar-content
 {
     display: flex !important;
@@ -347,8 +354,16 @@
 {
     margin-top: -5px;
     border-radius: 50%!important;    
-    height: 30px;
-    width: 30px;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+}
+
+/* Team */
+.topbar-nav .team-picture 
+{
+    margin-top: -5px;   
+    height: 25px;
     cursor: pointer;
 }
 

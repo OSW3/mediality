@@ -70,7 +70,7 @@ class Users implements UserInterface
     private $status;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Commande", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Commande", mappedBy="users")
      */
     private $order;
 
@@ -188,24 +188,26 @@ class Users implements UserInterface
     /**
      * @return Collection|Commande[]
      */
-    public function getCommande(): Collection
+    public function getOrder(): Collection
     {
         return $this->order;
     }
 
-    public function addCommande(Commande $commande): self
+    public function addOrder(Commande $commande): self
     {
         if (!$this->order->contains($commande)) {
             $this->order[] = $commande;
+            $commande->addUser( $this );
         }
 
         return $this;
     }
 
-    public function removeCommande(Commande $commande): self
+    public function removeOrder(Commande $commande): self
     {
         if ($this->order->contains($commande)) {
             $this->order->removeElement($commande);
+            $commande->removeUser($this);
         }
 
         return $this;

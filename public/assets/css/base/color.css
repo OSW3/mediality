@@ -5,16 +5,19 @@ html, body
 
 .topbar
 {
-    background-color: #00cdcb;
-    background: rgb(0,173,170);
-    background: -moz-linear-gradient(left, rgba(0,173,170,1) 0%, rgba(0,205,203,1) 100%);
-    background: -webkit-linear-gradient(left, rgba(0,173,170,1) 0%,rgba(0,205,203,1) 100%);
-    background: linear-gradient(to right, rgba(0,173,170,1) 0%,rgba(0,205,203,1) 100%);
+
+    /* Bleu d'origine : rgba(0,173,170,1) */
+
+    background-color: #0ca0e8;
+    background: rgb(12,160,232);
+    background: -moz-linear-gradient(left, rgba(12,160,232,1) 0%, rgba(12,160,232,1) 100%);
+    background: -webkit-linear-gradient(left, rgba(12,160,232,1) 0%,rgba(12,160,232,1) 100%);
+    background: linear-gradient(to right, rgba(12,160,232,1) 0%,rgba(12,160,232,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00adaa', endColorstr='#00cdcb',GradientType=1 );
 }
 .topbar-header
 {
-    color: rgba(255, 255, 255, 0.80);
+    color: rgba(255, 255, 255, 1);
 }
 
 .toolbar
