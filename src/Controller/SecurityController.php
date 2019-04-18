@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\UserFormType;
 use App\Entity\Users;
@@ -19,9 +21,11 @@ class SecurityController extends AbstractController
     /**
      * @Route("/register", name="register")
      * @Route("/settings/{id}/update", name="userUpdate", requirements={"id"="\d+"})
+     * @param Users|null $user
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return RedirectResponse|Response
      */
-
-
     public function register(Users $user = null,Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         if (!$user) {
@@ -62,7 +66,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/settings/{id}/delete", name="userDelete")
      *
-     * @param Evenement $user
+     * @param Users $user
      * @param Request $request
      * @param ObjectManager $manager
      * @return Response
@@ -80,12 +84,14 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/login", name="login")
-     * @param Request $request
+     * @param AuthenticationUtils $authenticationUtils
      * @return Response
      */
-    public function login(Request $request, AuthenticationUtils $authenticationUtils)
+    public function login(AuthenticationUtils $authenticationUtils)
     {
-        
+
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
         $form = $this->createFormBuilder()
             ->add('email', TextType::class)
             ->add('password', PasswordType::class)
@@ -94,7 +100,8 @@ class SecurityController extends AbstractController
 
 
         return $this->render('security/login.html.twig', [
-            'formLogin' => $form->createView()
+            'formLogin' => $form->createView(),
+            'error' => $error
         ]);
     }
 

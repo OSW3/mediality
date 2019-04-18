@@ -3,7 +3,7 @@
 {% form_theme formLogin 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-    <div class="container">
+<div class="container">
 
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">
@@ -11,7 +11,9 @@
         </div>
     {% endfor %}
 
-
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
     {{ form_start(formLogin) }}
         {{ form_widget(formLogin, {'attr': {'class': 'task_field'}}) }}
     {{ form_end(formLogin) }}
