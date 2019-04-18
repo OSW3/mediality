@@ -7,10 +7,30 @@
 <link rel="stylesheet" href="https://fullcalendar.io/releases/core/4.0.1/main.min.css">
 <link rel="stylesheet" href="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.css">
 <link rel="stylesheet" href="https://fullcalendar.io/releases/timegrid/4.0.1/main.min.css">
+<link rel="stylesheet" href="{{ asset('assets/css/calendar/sideBar.css')}}">
 {% endblock %}
 
 {% block body %}
-    {% include '@Calendar/calendar.html' %}
+    <div class="content">
+    <!--         SIDEBAR            -->   
+        
+    <div class="sidebar-header">
+        <div class="toggle_btn2-open">
+            <a href="#" class="toggle_btn" >
+                <img class="icon-filter" src="{{ asset('assets/image/logo_svg/cancel-music.svg') }}">   
+                </img>
+            </a>
+        </div>
+    </div>
+    <div class="sidebar">
+        
+    </div>
+        <div class=" spaceCalendar">
+            {% include '@Calendar/calendar.html' %}
+        </div>
+        
+    </div>
+    
         
 {% endblock %}
 
@@ -20,7 +40,7 @@
     <script src="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.js"></script>
     <script src="https://fullcalendar.io/releases/timegrid/4.0.1/main.min.js"></script>     
     <script src="{{ asset('assets/js/calendar/surcharge.js') }}"></script>
-
+    <script src="{{ asset('assets/js/calendar/sideBar.js') }}"></script>
     
 {% endblock %}
 

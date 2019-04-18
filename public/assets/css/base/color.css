@@ -3,18 +3,6 @@ html, body
     background-color: #ffffff;
 }
 
-/* 
- * Layout
- */
-
-.topbar,
-.toolbar,
-.navbar,
-.sidebar,
-.workspace
-{
-}
-
 .topbar
 {
     background-color: #00cdcb;
@@ -41,6 +29,7 @@ html, body
 }
 
 .sidebar,
+.sidebar-header,
 .sidebar .menu-title
 {
     background-color: #fafafa;
