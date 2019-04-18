@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+date_default_timezone_set('Europe/Paris');
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -66,6 +68,9 @@ class Commande
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->setDateRequest(new \DateTime('now'));
+        $this->setDateDelivery(new \DateTime('now'));
+        $this->setDateDiffusion(new \DateTime('now'));
     }
 
     public function getId(): ?int
