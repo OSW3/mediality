@@ -195,7 +195,6 @@ class Users implements UserInterface
 
     public function addOrder(Commande $commande): self
     {
-        dump($commande);exit();
         if (!$this->order->contains($commande)) {
             $this->order[] = $commande;
             $commande->addUser( $this );
