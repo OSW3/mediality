@@ -29,7 +29,10 @@
                     <li class="item" id="team">
                         <a href="#team" class="btn"><i class="fas fa-users"></i></i>Team</a>
                         <div class="smenu">
-                            <a href="{{path('team')}}">Team</a>
+                            <a href="{{path('singleTeam',{'team': 'internet' })}}">Internet</a>
+                            <a href="{{path('singleTeam',{'team': 'television' })}}">Télévision</a>
+                            <a href="{{path('singleTeam',{'team': 'radio' })}}">Radio</a>
+                            <a href="{{path('singleTeam',{'team': 'journal' })}}">Journal</a>
                         </div>
                     </li>
 
