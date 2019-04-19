@@ -2,9 +2,9 @@
 
 namespace App\EventListener;
 
+use CalendarBundle\Entity\Event;
 use App\Repository\CommandeRepository;
 use App\Repository\EvenementRepository;
-use CalendarBundle\Entity\Event;
 use CalendarBundle\Event\CalendarEvent;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -27,6 +27,7 @@ class CalendarListener
         $end = $calendar->getEnd();
         $filters = $calendar->getFilters();
 
+        // Recupération des events
         $events = $this->eventRepository
             ->createQueryBuilder('e')
             ->where('e.dateStart BETWEEN :start and :end')
@@ -35,6 +36,8 @@ class CalendarListener
             ->getQuery()
             ->getResult()
         ;
+
+        // Récupération des commandes
         $orders = $this->orderRepository
             ->createQueryBuilder('o')
             ->where('o.dateDelivery BETWEEN :start and :end')

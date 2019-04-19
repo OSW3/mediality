@@ -26,4 +26,6 @@ class SettingsController extends AbstractController
             'controller_name' => 'SettingsController',
         ]);
     }
+
+    
 }
