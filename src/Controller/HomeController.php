@@ -12,8 +12,14 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->render('calendar/calendarEvent.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->render('calendar/calendarEvent.html.twig', [
+                'controller_name' => 'HomeController',
+            ]);
+        } else {
+            return $this->redirectToRoute('login');
+        }
+
+        
     }
 }

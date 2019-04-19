@@ -17,5 +17,7 @@
     {{ form_start(formLogin) }}
         {{ form_widget(formLogin, {'attr': {'class': 'task_field'}}) }}
     {{ form_end(formLogin) }}
+
+    <a class="btn btn-danger btn-block" href="{{ path('register') }}">Vous n'avez pas de compte ? Cliquez ici</a>
 </div>
 {% endblock %}

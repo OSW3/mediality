@@ -11,6 +11,7 @@ use App\Entity\Commande;
 use App\Form\CommandFormType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\UsersRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class CommandController extends AbstractController
 {
