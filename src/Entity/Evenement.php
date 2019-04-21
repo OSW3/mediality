@@ -82,6 +82,17 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(
+     *     maxSize="5242880",
+ *         mimeTypes = {
+     *          "image/png",
+     *          "image/jpeg",
+     *          "image/jpg",
+     *          "image/gif",
+     *          "application/pdf",
+     *          "application/x-pdf"
+     *      }
+     * )
      */
     private $upload;
 

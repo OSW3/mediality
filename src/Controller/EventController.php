@@ -7,6 +7,7 @@ use App\Form\EventFormType;
 use App\Repository\EvenementRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -50,6 +51,7 @@ class EventController extends AbstractController
      */
     public function eventDelete(Evenement $event, Request $request, ObjectManager $manager) {
         if($this->isCsrfTokenValid('delete'.$event->getId(), $request->get('_token'))){
+
             $manager->remove($event);
             $manager->flush();
         }
@@ -74,8 +76,23 @@ class EventController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
+            // Cherche le file qui a été uploadé
+            $file = $form->get('upload')->getData();
+            // Donne un nom à notre fichier
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            try {
+                // Deplacer le fichier dans le dossier correspondant
+                $file->move(
+                    $this->getParameter('uploads_directory'),
+                    $fileName
+                );
+            } catch (FileException $e) {
+                // ... handle exception if something happens during file upload
+            }
+            // Enregistrer le nouveau nom dans la base de donnée
+            $event->setUpload($fileName);
             if ($event->getCategory() == ''){
-                $event->setCategory('Sport');
+                $event->setCategory('Divers');
             }
             $em->persist($event);
             $em->flush();
