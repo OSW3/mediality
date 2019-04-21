@@ -3,10 +3,21 @@
 {% form_theme formCreateCommand 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-<div class="formFlex">
-    {{ form_start(formCreateCommand) }}
-        {{ form_widget(formCreateCommand) }}
-<div>
-    <button type="submit" class='btn btn-primary btn-block'>Créer une commande</button>
-    {{ form_end(formCreateCommand) }}
+    {% if editMode %}
+        <h1>Modification d'une commande</h1>
+    {% else %}
+        <h1>Création d'une commande</h1>
+    {% endif %}
+    <div class="formFlex">
+        {{ form_start(formCreateCommand) }}
+            {{ form_widget(formCreateCommand) }}
+    <div>
+        <button type="submit" class='btn btn-primary btn-block'>
+            {% if editMode %}
+                Enregistrer les modifications
+            {% else %}
+                Créer une commande
+            {% endif %}
+        </button>
+        {{ form_end(formCreateCommand) }}
 {% endblock %}

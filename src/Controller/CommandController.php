@@ -10,23 +10,23 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Commande;
 use App\Form\CommandFormType;
 use Symfony\Component\HttpFoundation\Request;
-use App\Repository\UsersRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class CommandController extends AbstractController
 {
     /**
      * @Route("/creer-commande", name="commandCreate")
+     * @Route("/commande/{id}/modifier", name="orderEdit", requirements={"id"="\d+"})
      * @param Request $request
      * @param ObjectManager $manager
+     * @param Commande|null $command
      * @return Response
      */
-    public function commandCreate(Request $request, ObjectManager $manager)
+    public function commandCreate(Request $request, ObjectManager $manager, Commande $command = null)
     {
+        if (!$command){
+            $command = new Commande();
+        }
 
-        $command = new Commande();
-        dump($command);
-        
         $form = $this->createForm(CommandFormType::class, $command);
 
         $form->handleRequest($request);
@@ -42,6 +42,7 @@ class CommandController extends AbstractController
 
         return $this->render('command/commandCreate.html.twig', [
             'formCreateCommand' => $form->createView(),
+            'editMode' => $command->getId() !== null
         ]);
     }
 
@@ -70,5 +71,22 @@ class CommandController extends AbstractController
         return $this->render('command/show.html.twig', [
             'order' => $order
         ]);
+    }
+
+    /**
+     * @Route("/order/{id}/delete", name="orderDelete")
+     *
+     * @param Commande $order
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @return Response
+     */
+    public function eventDelete(Commande $order, Request $request, ObjectManager $manager) {
+        if($this->isCsrfTokenValid('delete'.$order->getId(), $request->get('_token'))){
+            $manager->remove($order);
+            $manager->flush();
+        }
+
+        return $this->redirectToRoute('commandView');
     }
 }

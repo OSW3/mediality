@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Evenement;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -23,7 +24,8 @@ class EventFormType extends AbstractType
             ->add('mailContact')
             ->add('phoneContact')
             ->add('comment')
-            ->add('upload')
+            //->add('upload')
+            ->add('upload', FileType::class, ['label' => 'Brochure (File)'])
         ;
     }
 

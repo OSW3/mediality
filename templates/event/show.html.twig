@@ -35,9 +35,13 @@
         </tbody>
 
     </table>
-    <a href="{{ path('eventEdit', {'id': event.id}) }}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a>
+    {% if event.upload is not null %}
+        <a href="{{ asset('uploads/' ~ event.upload) }}" class="btn btn-secondary btn-block">View brochure (PDF)</a>
+
+    {% endif %}
+    <a href="{{ path('eventEdit', {'id': event.id}) }}" class="btn btn-primary btn-block"><i class="fa fa-pencil-alt"></i></a>
     <form class="delete" action="{{ path('eventDelete', {'id': event.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cet évenement?')">
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.id) }}">
-        <button type="submit" class="btn btn-danger"><i class="fa fa-trash-alt"></i></button>
+        <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash-alt"></i></button>
     </form>
 {% endblock %}
