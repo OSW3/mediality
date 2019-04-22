@@ -3,10 +3,58 @@
 {% form_theme formCreateCommand 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-<div class="formFlex">
+<div class="container-fluid">
     {{ form_start(formCreateCommand) }}
-        {{ form_widget(formCreateCommand) }}
-<div>
+    <div class="row">     
+        <div class="col-md-12">
+        <div class="form-group">
+           <label for="command_form_title">Titre :</label>
+           {{ form_widget(formCreateCommand.title, {'attr': {'placeholder': 'Titre de l\'événement.', "class": "form-control form-mediality"} }) }}
+        </div>
+        <div class="form-group">
+            <label for="command_form_description">Description :</label>
+            {{ form_widget(formCreateCommand.description, {'attr': {'placeholder': 'Description de l\'événement.', "class": "form-control form-mediality"} }) }}
+        </div>
+        <div class="form-group">
+            <label for="command_form_nameApplicant">Nom du :</label>
+            {{ form_widget(formCreateCommand.nameApplicant, {'attr': {'placeholder': 'Nom du .', "class": "form-control form-mediality"} }) }}
+        </div>
+        <div class="form-group">
+            <label for="command_form_observation">Observation :</label>
+            {{ form_widget(formCreateCommand.observation, {'attr': {'placeholder': 'Observation de l\'événement.', "class": "form-control form-mediality"} }) }}
+        </div>
+        </div>
+        <div class="col-md-12 row">
+            <div class="col-md-6"> 
+        <div class="form-group">
+            <label for="command_form_dateDelivery">Date de livraison :</label>
+            {{ form_widget(formCreateCommand.dateDelivery, {'attr': {"class": " form-mediality"} }) }}
+        </div>
+            </div>
+            <div class="col-md-6"> 
+        <div class="form-group">
+            <label for="command_form_dateDiffusion">Date de Diffusion :</label>
+            {{ form_widget(formCreateCommand.dateDiffusion, {'attr': {"class": " form-mediality"} }) }}
+        </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+        <div class="form-group">
+            <label for="">Journaliste (Equipe) :</label>
+            {{ form_widget(formCreateCommand.users) }}
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div class="form-group">
+            <label >Liste des événements :</label>
+            {{ form_widget(formCreateCommand.event) }}
+        </div>
+        </div>
+    </div>
+    <div class="form-group">
     <button type="submit" class='btn btn-primary btn-block'>Créer une commande</button>
+    </div>
     {{ form_end(formCreateCommand) }}
+
+</div>
 {% endblock %}

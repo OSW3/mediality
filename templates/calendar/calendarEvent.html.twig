@@ -7,21 +7,25 @@
 <link rel="stylesheet" href="https://fullcalendar.io/releases/core/4.0.1/main.min.css">
 <link rel="stylesheet" href="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.css">
 <link rel="stylesheet" href="https://fullcalendar.io/releases/timegrid/4.0.1/main.min.css">
+<link rel="stylesheet" href="{{ asset('assets/css/calendar/hamburgers.css')}}">
 <link rel="stylesheet" href="{{ asset('assets/css/calendar/surcharge.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/calendar/calendar.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/calendar/sideBar.css')}}">
+
 {% endblock %}
 
 {% block body %}
     <div class="content">
-    <!--         SIDEBAR            -->   
-        
+    <!--         SIDEBAR            -->
     <div class="sidebar-header">
         <div class="toggle_btn2-open">
-            <a href="#" class="toggle_btn" >
-                <img class="icon-filter" src="{{ asset('assets/image/logo_svg/cancel-music.svg') }}">   
-                </img>
-            </a>
+            <div class="toggle_btn">
+                <div class="hamburger hamburger--arrow is-active" >
+                    <div class="hamburger-box">
+                        <div class="hamburger-inner"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="sidebar">
@@ -48,6 +52,8 @@
 
                 defaultView: 'dayGridMonth',
                 editable: true,
+                height: '650',
+                
                 eventSources: [
                     {
                         url: "{{ path('fc_load_events') }}",
@@ -79,11 +85,33 @@
 
             });
             calendar.setOption('locale', 'fr');
+            
             calendar.render();
         });
 
 
-    </script>
+            /**
+             * forEach implementation for Objects/NodeLists/Arrays, automatic type loops and context options
+             *
+             * @private
+             * @author Todd Motto
+             * @link https://github.com/toddmotto/foreach
+             * @param {Array|Object|NodeList} collection - Collection of items to iterate, could be an Array, Object or NodeList
+             * @callback requestCallback      callback   - Callback function for each iteration.
+             * @param {Array|Object|NodeList} scope=null - Object/NodeList/Array that forEach is iterating over, to use as the this value when executing callback.
+             * @returns {}
+             */
+              var forEach=function(t,o,r){if("[object Object]"===Object.prototype.toString.call(t))for(var c in t)Object.prototype.hasOwnProperty.call(t,c)&&o.call(r,t[c],c,t);else for(var e=0,l=t.length;l>e;e++)o.call(r,t[e],e,t)};
+          
+              var hamburgers = document.querySelectorAll(".hamburger");
+              if (hamburgers.length > 0) {
+                forEach(hamburgers, function(hamburger) {
+                  hamburger.addEventListener("click", function() {
+                    this.classList.toggle("is-active");
+                  }, false);
+                });
+              }
+            </script>
     <script src="{{ asset('assets/js/calendar/sideBar.js') }}"></script>
 
 {% endblock %}
