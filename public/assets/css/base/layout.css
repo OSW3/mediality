@@ -76,7 +76,7 @@
 .navbar
 {
     height: 100%;
-    top: 60px;
+    top: 62px;
 
     z-index: 5 !important;
 }
@@ -229,9 +229,13 @@
 {
     display: block;
     padding: 10px 15px;
-
     background-color: transparent !important;
 }
+
+a.search-icon {
+    margin-top: -30px;
+}
+
 .navbar-content > ul > li > a > svg
 {
     width: 26px !important;
