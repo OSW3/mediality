@@ -19,26 +19,44 @@
         <tr>
             <th>Titre</th>
             <td>{{ event.title }}</td>
-        </tr><tr>
+        </tr>
+        <tr>
             <th>Description</th>
             <td>{{ event.description }}</td>
-        </tr><tr>
+        </tr>
+        <tr>
             <th>Category</th>
             <td>{{ event.category }}</td>
-        </tr><tr>
+        </tr>
+        <tr>
             <th>Lieu</th>
             <td>{{ event.place }}</td>
-        </tr><tr>
+        </tr>
+        <tr>
             <th>Adresse</th>
             <td>{{ event.address }}</td>
         </tr>
+        <tr>
+            <th>Nom du contact</th>
+            <td>{{ event.nameContact }}</td>
+        </tr>
+        <tr>
+            <th>Mail du contact</th>
+            <td>{{ event.mailContact }}</td>
+        </tr>
+        <tr>
+            <th>Commentaire sur l'évènement</th>
+            <td>{{ event.comment }}</td>
+        </tr>
+        {% if event.upload is not null %}
+        <tr>
+            <th>Documents rattachés</th>
+            <td><a href="{{ asset('uploads/' ~ event.upload) }}">Voir document</a></td>
+        </tr>
+        {% endif %}
         </tbody>
 
     </table>
-    {% if event.upload is not null %}
-        <a href="{{ asset('uploads/' ~ event.upload) }}" class="btn btn-secondary btn-block">Voir document</a>
-
-    {% endif %}
     <a href="{{ path('eventEdit', {'id': event.id}) }}" class="btn btn-primary btn-block"><i class="fa fa-pencil-alt"></i></a>
     <form class="delete" action="{{ path('eventDelete', {'id': event.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cet évenement?')">
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.id) }}">

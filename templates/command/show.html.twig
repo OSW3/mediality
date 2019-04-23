@@ -36,7 +36,11 @@
             <tr>
                 <th>Journalistes concernée par la commande</th>
                 <td>{% for users in order.users %}
-                        {{ users.firstname }} {{ users.lastname | upper }} ,
+
+                        {{ users.firstname }} {{ users.lastname | upper }}
+                        {% if loop.index < order.users|length %}
+                            ,
+                        {% endif %}
                 {% endfor %}</td>
             </tr>
         </tbody>

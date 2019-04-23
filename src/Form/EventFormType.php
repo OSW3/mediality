@@ -25,7 +25,7 @@ class EventFormType extends AbstractType
             ->add('phoneContact')
             ->add('comment')
             //->add('upload')
-            ->add('upload', FileType::class, ['required' => false]);
+            ->add('upload', FileType::class, ['data_class' => null,'required' => false]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

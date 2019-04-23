@@ -67,7 +67,7 @@ class EventController extends AbstractController
      * @param Evenement|null $event
      * @return Response
      */
-    public function eventForm(Request $request, ObjectManager $em, Evenement $event = null) {
+    public function eventForm(Evenement $event = null,Request $request, ObjectManager $em) {
         if(!$event){
             $event = new Evenement();
         }
