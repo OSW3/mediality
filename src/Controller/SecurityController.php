@@ -91,7 +91,7 @@ class SecurityController extends AbstractController
     {
 
         $error = $authenticationUtils->getLastAuthenticationError();
-        $lastUsername = $authenticationUtils->getLastUsername();
+
         $form = $this->createFormBuilder()
             ->add('email', TextType::class)
             ->add('password', PasswordType::class)
