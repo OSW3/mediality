@@ -64,7 +64,7 @@ class SecurityController extends AbstractController
 
 
     /**
-     * @Route("/settings/{id}/delete", name="userDelete")
+     * @Route("/settings/delete/{id}", name="userDelete")
      *
      * @param Users $user
      * @param Request $request
