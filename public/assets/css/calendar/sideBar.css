@@ -9,6 +9,18 @@
 
 .sidebar
 {
+    width: 0px;
+    height: calc(100% - 100px);
+    left: 62px;
+    position: relative;
+    float: inherit;
+
+    -webkit-transition: all .3s;
+            transition: all .3s;
+}
+
+.sidebar-hidden
+{
     width: 19%;
     height: 100%;
     padding: 0.5rem;
@@ -21,35 +33,7 @@
             transition: all .3s;
 }
 
-.sidebar-hidden
-{
-    width: 0px;
-    height: calc(100% - 100px);
-    left: 62px;
-    position: relative;
-    float: inherit;
-
-    -webkit-transition: all .3s;
-            transition: all .3s;
-}
-
 .spaceCalendar
-{
-    padding-right: 1rem;
-    padding-left: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 2rem;
-    width: 80%;
-    right: 0;
-    
-    position: relative;
-    float: right;
-
-    -webkit-transition: all .3s;
-            transition: all .3s;
-}
-
-.spaceCalendar-hidden
 {
     padding-right: 1rem;
     padding-left: 2rem;
@@ -65,19 +49,35 @@
             transition: all .3s;
 }
 
+.spaceCalendar-hidden
+{
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    width: 80%;
+    right: 0;
+    
+    position: relative;
+    float: right;
 
-
-.toggle_btn2-open{
-    padding-left: 20%;
-    padding-top: 0.5rem;
     -webkit-transition: all .3s;
-    transition: all .3s;
+            transition: all .3s;
 }
 
-.toggle_btn2-close{
+.toggle_btn2-open{
 
     padding-left: 0.7%;
     padding-top: 0.5rem;
+    width: 30px;
     -webkit-transition: all .3s;
             transition: all .3s;
+}
+
+.toggle_btn2-close{
+    padding-left: 20%;
+    padding-top: 0.5rem;
+    width: 30px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
 }

@@ -6,7 +6,8 @@ var burger = document.querySelector('.hamburger-inner');
 
 
 btn.onclick=function(){
-    nav.classList.toggle('sidebar-hidden');
+    
+    nav.classList.toggle('sidebar');
 
     corp.classList.toggle('spaceCalendar-hidden');
 
