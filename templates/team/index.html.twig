@@ -14,25 +14,25 @@
               <h2 class="d-block mx-auto">Team {{ team.name }}</h2>
               <p class="p-5"> {{ team.description }}</p>
           </div>
-        <div class="row">  
-            {% for user in team.users %} 
-            <div class="col-md-4">
-                <div class="card-deck">
-                    <div class="card">
-                      <img src="http://www.webcoderskull.com/img/team4.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title"><a href="">{{ user.firstname }}</a></h5>
-                        <p class="card-text">{{ user.status }}</p>
-                        <p class="card-text">
-                           <a class="mr-3" href="mailto:{{ user.email }}"><i class="fas fa-envelope"></i></a>
-                           <a href="tel:{{ user.phone }}"><i class="fas fa-phone"></i></a>
-                        </p>
-                      </div>
+            <div class="row">
+                {% for user in team.users %}
+                <div class="col-md-4">
+                    <div class="card-deck">
+                        <div class="card">
+                          <img src="http://www.webcoderskull.com/img/team4.png" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title"><a href="">{{ user.firstname }}</a></h5>
+                            <p class="card-text">{{ user.status }}</p>
+                            <p class="card-text">
+                               <a class="mr-3" href="mailto:{{ user.email }}"><i class="fas fa-envelope"></i></a>
+                               <a href="tel:{{ user.phone }}"><i class="fas fa-phone"></i></a>
+                            </p>
+                          </div>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
     </div>
 </section>
 {% endfor %}
