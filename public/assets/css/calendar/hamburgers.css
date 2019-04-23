@@ -51,15 +51,15 @@
     content: "";
     display: block; }
   .hamburger-inner::before {
-    top: -4px; }
+    top: -6px; }
   .hamburger-inner::after {
-    bottom: -4px; }
+    bottom: -6px; }
 
 
     .hamburger-inner-menu::before {
-      top: -6px; }
+      top: -4px; }
     .hamburger-inner-menu::after {
-      bottom: -6px; }
+      bottom: -4px; }
   
     
 
