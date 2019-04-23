@@ -1,6 +1,7 @@
 /* 
  * Layout
  */
+ 
 
 .brand,
 .topbar,
@@ -11,7 +12,13 @@
 .sidebar,
 .workspace
 {
+    font-family: 'Questrial', sans-serif;
     position: fixed !important;
+}
+
+h1 {
+    font-family: 'Anton', sans-serif;
+    
 }
 
 .topbar
@@ -33,7 +40,7 @@
     font-size: 1.5rem;
     
     line-height: 60px;
-    padding-left: 63px;
+    padding-left: 15px;
 }
 .topbar-header a:link{
     text-decoration:none; 
@@ -665,8 +672,13 @@ a.search-icon {
 .workspace h5:first-child,
 .workspace h6:first-child
 {
-    margin-top: .5rem;
+    margin: .5rem;
 }
+
+.workspace h1:first-child {
+    margin: 2rem 1rem 2rem .5rem;
+}
+
 
 .workspace > section + section
 {
