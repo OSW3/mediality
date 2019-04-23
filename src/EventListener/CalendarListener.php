@@ -70,7 +70,7 @@ class CalendarListener
             // this create the events with your data (here booking data) to fill calendar
             $mediaOrder = new Event(
                 $order->getTitle(),
-                $order->getDateDelivery(),
+                $order->getDateRequest(),
                 $order->getDateDiffusion() // If the end date is null or not defined, a all day event is created.
             );
             $mediaOrder->setOptions([
