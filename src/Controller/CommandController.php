@@ -15,7 +15,7 @@ class CommandController extends AbstractController
 {
     /**
      * @Route("/creer-commande", name="commandCreate")
-     * @Route("/commande/{id}/modifier", name="orderEdit", requirements={"id"="\d+"})
+     * @Route("/commande/modifier/{id}", name="orderEdit", requirements={"id"="\d+"})
      * @param Request $request
      * @param ObjectManager $manager
      * @param Commande|null $command
@@ -74,7 +74,7 @@ class CommandController extends AbstractController
     }
 
     /**
-     * @Route("/order/{id}/delete", name="orderDelete")
+     * @Route("/order/delete/{id}", name="orderDelete")
      *
      * @param Commande $order
      * @param Request $request

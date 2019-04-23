@@ -42,7 +42,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/event/{id}/delete", name="eventDelete")
+     * @Route("/event/delete/{id}", name="eventDelete")
      *
      * @param Evenement $event
      * @param Request $request
@@ -61,7 +61,7 @@ class EventController extends AbstractController
 
     /**
      * @Route("/event/create", name="eventCreate")
-     * @Route("/event/{id}/edit", name="eventEdit", requirements={"id"="\d+"})
+     * @Route("/event/edit/{id}", name="eventEdit", requirements={"id"="\d+"})
      * @param Request $request
      * @param ObjectManager $em
      * @param Evenement|null $event
