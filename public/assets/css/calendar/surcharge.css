@@ -1,3 +1,9 @@
-.fc-toolbar h2{
+.fc-toolbar h2 {
     text-transform: capitalize;
+}
+
+.fc-button-primary {
+    color: #212529;
+    background-color: #ffffff;
+    border-color: #333333;
 }

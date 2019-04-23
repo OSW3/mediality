@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+ <h1>Liste des évènements</h1>
+
     <table class="table">
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th>#</th>
                 <th>Titre</th>
@@ -13,8 +15,8 @@
                 <th>Ville</th>
                 <th>Adresse</th>
                 <th>Nom du contact</th>
-                <th>Email du contact</th>
-                <th>Télephone du contact</th>
+                <th>E-mail</th>
+                <th>Téléphone</th>
                 <th>Commentaire</th>
                 <th>Action</th>
             </tr>
@@ -35,7 +37,7 @@
                     <td>{{ event.phoneContact }}</td>
                     <td>{{ event.comment | slice(0, 15) }}...</td>
                     <td>
-                        <a href="{{ path('eventSingle', {'id': event.id}) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                        <a href="{{ path('eventSingle', {'id': event.id}) }}" class="btn btn-danger"><i class="fa fa-eye"></i></a>
                     </td>
                 </tr>
             {% endfor %}

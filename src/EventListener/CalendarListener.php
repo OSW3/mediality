@@ -54,8 +54,8 @@ class CalendarListener
                 $event->getDateEnd() // If the end date is null or not defined, a all day event is created.
             );
             $mediaEvent->setOptions([
-                'backgroundColor' => 'red',
-                'borderColor' => 'red',
+                'backgroundColor' => '#EA4335',
+                'borderColor' => '#EA4335',
             ]);
             $mediaEvent->addOption(
                 'url',
@@ -74,8 +74,8 @@ class CalendarListener
                 $order->getDateDiffusion() // If the end date is null or not defined, a all day event is created.
             );
             $mediaOrder->setOptions([
-                'backgroundColor' => 'blue',
-                'borderColor' => 'blue',
+                'backgroundColor' => '#0CA0E8',
+                'borderColor' => '#0CA0E8',
             ]);
             $mediaOrder->addOption(
                 'url',
