@@ -1,3 +1,4 @@
+
 .top-authenticated{
     color: #fff;
     position: relative;
@@ -16,3 +17,33 @@
     font-size: 0.7rem;
     text-decoration: none;
 }
+
+ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  
+  .our-webcoderskull .cnt-block{ 
+     float:left; 
+     width:100%; 
+     background:#fff; 
+     padding:30px 20px; 
+     text-align:center; 
+     border:2px solid #d5d5d5;
+     margin: 0 0 28px;
+  }
+ 
+  .our-webcoderskull .cnt-block img{ 
+     width:148px; 
+     height:148px; 
+     border-radius:100%; 
+  }
+  .our-webcoderskull .cnt-block h3{ 
+     color:#2a2a2a; 
+     font-size:20px; 
+     font-weight:500; 
+     padding:6px 0;
+     text-transform:uppercase;
+  }
+

@@ -1,19 +1,22 @@
 {% extends "base.html.twig" %}
 
-{% block body %}
+{% block stylesheets %}
+ <link rel="stylesheet" href="{{ asset('assets/css/base/Profil.css') }}">
+{% endblock %}
 
+{% block body %}
        <section class="our-webcoderskull padding-lg">
             <div class="container">
               <div class="row heading heading-icon">
-                  <h2 class="text-white d-block mx-auto">Team {{ equipe.name }}</h2>
-                  <p class="p-5 text-white"> {{ equipe.description }}</p>
+                  <h2 class="text-black d-block mx-auto mt-5">Team {{ equipe.name }}</h2>
+                  <p class="p-5 text-black"> {{ equipe.description }}</p>
               </div>
               <ul class="row">               
                     {% for user in equipe.users %}              
                         <li class="col-12 col-md-6 col-lg-3">
                             <div class="cnt-block equal-hight" style="height: 349px;">
                                 <figure><img src="http://www.webcoderskull.com/img/team4.png" class="img-responsive" alt="photo"></figure>
-                                <h3><a href="">{{ user.firstname }}</a></h3>
+                                <h3>{{ user.firstname }}</h3>
                                 <p>{{ user.status }}</p>
                                 <a class="mr-3" href="mailto:{{ user.email }}"><i class="fas fa-envelope"></i></a>
                                 <a href="tel:{{ user.phone }}"><i class="fas fa-phone"></i></a>
