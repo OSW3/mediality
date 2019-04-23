@@ -15,6 +15,7 @@
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
     {{ form_start(formLogin) }}
+        {{ form_row(formLogin.email, {'attr': {'value': lastUserName }}) }}
         {{ form_widget(formLogin, {'attr': {'class': 'task_field'}}) }}
     {{ form_end(formLogin) }}
 
