@@ -53,9 +53,9 @@
             var calendar = new FullCalendar.Calendar(calendarEl, {
 
                 defaultView: 'dayGridMonth',
-                editable: true,
                 height: '650',
-                
+                editable: true,
+
                 eventSources: [
                     {
                         url: "{{ path('fc_load_events') }}",
