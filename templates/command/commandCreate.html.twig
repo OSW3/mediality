@@ -3,6 +3,11 @@
 {% form_theme formCreateCommand 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
+{% if editMode %}
+        <h1>Modification d'une commande</h1>
+    {% else %}
+        <h1>Création d'une commande</h1>
+    {% endif %}
 <div class="container-fluid">
     {{ form_start(formCreateCommand) }}
     <div class="row">     
@@ -52,9 +57,16 @@
         </div>
     </div>
     <div class="form-group">
-    <button type="submit" class='btn btn-primary btn-block'>Créer une commande</button>
+    <button type="submit" class='btn btn-primary btn-block'>
+            {% if editMode %}
+                Enregistrer les modifications
+            {% else %}
+                Créer une commande
+            {% endif %}
+        </button>
     </div>
     {{ form_end(formCreateCommand) }}
 
 </div>
+
 {% endblock %}

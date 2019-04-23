@@ -86,7 +86,6 @@ class EventFixtures extends Fixture
                                  $user->addOrder($commande);
                              }
 
-
                         $manager->persist($user);
                     }
                 }

@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.css">
 <link rel="stylesheet" href="https://fullcalendar.io/releases/timegrid/4.0.1/main.min.css">
 <link rel="stylesheet" href="{{ asset('assets/css/calendar/hamburgers.css')}}">
+<link rel="stylesheet" href="https://fullcalendar.io/releases/list/4.0.1/main.min.css">
 <link rel="stylesheet" href="{{ asset('assets/css/calendar/surcharge.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/calendar/calendar.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/calendar/sideBar.css')}}">
@@ -45,6 +46,7 @@
     <script src="https://fullcalendar.io/releases/interaction/4.0.1/main.min.js"></script>
     <script src="https://fullcalendar.io/releases/daygrid/4.0.1/main.min.js"></script>
     <script src="https://fullcalendar.io/releases/timegrid/4.0.1/main.min.js"></script>     
+    <script src="https://fullcalendar.io/releases/list/4.0.1/main.min.js"></script>
     <script >
         document.addEventListener('DOMContentLoaded', () => {
             var calendarEl = document.getElementById('calendar-holder');
@@ -69,7 +71,7 @@
                 header: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,list',
                 },
                 buttonText: {
                     today:    "Aujourd'hui",
@@ -80,7 +82,7 @@
                 },
 
                 firstDay:1,
-                plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
+                plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ], // https://fullcalendar.io/docs/plugin-index
                 timezone: ('Europe/Paris'),
 
             });

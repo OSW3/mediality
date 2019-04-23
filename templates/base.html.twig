@@ -86,7 +86,7 @@
                                             class="profile-picture rounded-circle">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#/?page=settings&amp;main=profile">
+                                        <a class="dropdown-item" href=" {{ path('settings') }}">
                                             <div class="dropdown-item-icon">
                                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -100,7 +100,7 @@
                                         </a>
 
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#/?page=settings">
+                                        <a class="dropdown-item" href="{{ path('logout')}}">
                                             <div class="dropdown-item-icon">
                                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -138,7 +138,7 @@
                 <div class="navbar-content">
                     <ul>
                         <li>
-                            <a href="#" title="Rechercher">
+                            <a href="{{ path('home') }}" title="Rechercher">
                                     <?xml version="1.0" encoding="iso-8859-1"?>
                                     <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
