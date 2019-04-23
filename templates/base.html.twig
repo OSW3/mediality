@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/base/layout.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/base/color.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/base/dropdown.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/base/profil.css')}}">
     {% block stylesheets %}{% endblock %}
 </head>
 
@@ -33,6 +34,8 @@
                 </div>
 
             </div>
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            
             <div class="col-right">
                 <div class="topbar-content">
                     <div class="flex-left">
@@ -48,6 +51,7 @@
                                         <img src="{{asset('assets/image/team.png')}}" class="team-picture">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
+                                        {% if is_granted('ROLE_ADMIN') %}
                                         <a class="dropdown-item" href="">
                                             <div class="dropdown-item-icon">
                                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -60,6 +64,7 @@
                                             </div>
                                             Créer une équipe
                                         </a>
+                                        {% endif %}
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{path('team')}}">
                                             <div class="dropdown-item-icon">
@@ -121,9 +126,22 @@
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
+            
+            {% else %}
+                
+                    <div class="topbar-content">
+                        <div class="flex-right">
+                            <div class="top-authenticated">
+                                    <a class="content-authenticated" href="{{ path('register') }}">Inscription</a> 
+                                    |
+                                    <a class="content-authenticated" href="{{ path('login') }}">Connexion</a>
+                            </div>
+                        </div>
+                    </div>
+                
+            {% endif %}
         </div>
 
         <!--            NAVBAR             -->
