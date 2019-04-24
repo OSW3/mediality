@@ -19,6 +19,7 @@ class CalendarListener
         $this->router = $router;
         $this->eventRepository = $eventRepository;
         $this->orderRepository = $orderRepository;
+        
     }
 
     public function load(CalendarEvent $calendar)
