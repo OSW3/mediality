@@ -6,12 +6,10 @@
     <table class="table">
         <thead class="table-dark">
             <tr>
-                <th>#</th>
                 <th>Titre</th>
                 <th>Description</th>
-                <th>Observation</th>
                 <th>Nom du demandeur</th>
-                <th>Création de la commande</th>
+                <th>Date de création</th>
                 <th>Date de livraison</th>
                 <th>Date de Diffusion</th>
                 <th>Action</th>
@@ -20,10 +18,8 @@
         <tbody>
         {% for order in orders %}
             <tr>
-                <td>{{ order.id }}</td>
                 <td>{{ order.title }}</td>
-                <td>{{ order.description | slice(0, 30) }} ...</td>
-                <td>{{ order.observation | slice(0, 30) }} ...</td>
+                <td>{{ order.description | slice(0, 40) }} ...</td>
                 <td>{{ order.nameApplicant }}</td>
                 <td>{{ order.dateRequest | date('d / m / Y') }}</td>
                 <td>{{ order.dateDelivery | date('d / m / Y') }}</td>

@@ -4,17 +4,14 @@
 {% block body %}
     <table class="table">
         <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ event.id }}</td>
-        </tr>
+     
         <tr>
             <th>Date de début</th>
-            <td>{{ event.dateStart ? event.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+            <td>{{ event.dateStart ? event.dateStart|date('d/m/Y  à H:i') : '' }}</td>
         </tr>
         <tr>
             <th>Date de fin</th>
-            <td>{{ event.dateEnd ? event.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+            <td>{{ event.dateEnd ? event.dateEnd|date('d/m/Y  à H:i') : '' }}</td>
         </tr>
         <tr>
             <th>Titre</th>
@@ -25,7 +22,7 @@
             <td>{{ event.description }}</td>
         </tr>
         <tr>
-            <th>Category</th>
+            <th>Catégorie</th>
             <td>{{ event.category }}</td>
         </tr>
         <tr>
@@ -41,7 +38,7 @@
             <td>{{ event.nameContact }}</td>
         </tr>
         <tr>
-            <th>Mail du contact</th>
+            <th>E-mail du contact</th>
             <td>{{ event.mailContact }}</td>
         </tr>
         <tr>
@@ -56,10 +53,15 @@
         {% endif %}
         </tbody>
 
-    </table>
-    <a href="{{ path('eventEdit', {'id': event.id}) }}" class="btn btn-primary btn-block"><i class="fa fa-pencil-alt"></i></a>
+    </table> 
+    <div class="row">
+    <div class="col-md-6">
+    <a href="{{ path('eventEdit', {'id': event.id}) }}" class="btn btn-primary btn-block"><i class="fa fa-pencil-alt"></i>&nbsp&nbsp&nbspModifier</a>
+    </div>
+    <div class="col-md-6">
     <form class="delete" action="{{ path('eventDelete', {'id': event.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cet évenement?')">
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.id) }}">
-        <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash-alt"></i></button>
+        <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash-alt"></i>&nbsp&nbsp&nbspSupprimer</button>
     </form>
+    </div>
 {% endblock %}

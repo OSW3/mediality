@@ -6,7 +6,6 @@
     <table class="table">
         <thead class="table-dark">
             <tr>
-                <th>#</th>
                 <th>Titre</th>
                 <th>Description</th>
                 <th>Date de début</th>
@@ -24,9 +23,8 @@
         <tbody>
             {% for event in events %}
                 <tr>
-                    <td>{{ event.id }}</td>
                     <td>{{ event.title }}</td>
-                    <td>{{ event.description | slice(0, 30) }}</td>
+                    <td>{{ event.description | slice(0, 30) }} ...</td>
                     <td>{{ event.dateStart | date('d/m/Y à H:i') }}</td>
                     <td>{{ event.dateEnd | date('d/m/Y à H:i') }}</td>
                     <td>{{ event.category }}</td>
