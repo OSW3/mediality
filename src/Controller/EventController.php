@@ -82,15 +82,12 @@ class EventController extends AbstractController
                 $file = $form->get('upload')->getData();
                 // Donne un nom à notre fichier
                 $fileName = md5(uniqid()).'.'.$file->guessExtension();
-                try {
-                    // Deplacer le fichier dans le dossier correspondant
-                    $file->move(
-                        $this->getParameter('uploads_directory'),
-                        $fileName
-                    );
-                } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                }
+                // Deplacer le fichier dans le dossier correspondant
+                $file->move(
+                    $this->getParameter('uploads_directory'),
+                    $fileName
+                );
+
                 // Enregistrer le nouveau nom dans la base de donnée
                 $event->setUpload($fileName);
             }
