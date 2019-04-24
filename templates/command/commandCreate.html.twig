@@ -4,9 +4,9 @@
 
 {% block body %}
 {% if editMode %}
-        <h1>Modification d'une commande</h1>
+        <h1>Modification d'une tâche</h1>
     {% else %}
-        <h1>Création d'une commande</h1>
+        <h1>Affectation d'une tâche</h1>
     {% endif %}
 <div class="container-fluid">
     {{ form_start(formCreateCommand) }}
@@ -14,19 +14,19 @@
         <div class="col-md-12">
         <div class="form-group">
            <label for="command_form_title">Titre :</label>
-           {{ form_widget(formCreateCommand.title, {'attr': {'placeholder': 'Titre de l\'événement.', "class": "form-control form-mediality"} }) }}
+           {{ form_widget(formCreateCommand.title, {'attr': {'placeholder': 'Titre de la tâche', "class": "form-control form-mediality"} }) }}
         </div>
         <div class="form-group">
             <label for="command_form_description">Description :</label>
-            {{ form_widget(formCreateCommand.description, {'attr': {'placeholder': 'Description de l\'événement.', "class": "form-control form-mediality"} }) }}
+            {{ form_widget(formCreateCommand.description, {'attr': {'placeholder': 'Description du travail demandé', "class": "form-control form-mediality"} }) }}
         </div>
         <div class="form-group">
-            <label for="command_form_nameApplicant">Nom du demandeur:</label>
+            <label for="command_form_nameApplicant">Nom du demandeur :</label>
             {{ form_widget(formCreateCommand.nameApplicant, {'attr': {'placeholder': 'Nom du demandeur', "class": "form-control form-mediality"} }) }}
         </div>
         <div class="form-group">
-            <label for="command_form_observation">Observation :</label>
-            {{ form_widget(formCreateCommand.observation, {'attr': {'placeholder': 'Observation de l\'événement.', "class": "form-control form-mediality"} }) }}
+            <label for="command_form_observation">Observations :</label>
+            {{ form_widget(formCreateCommand.observation, {'attr': {'placeholder': 'Observations sur la tâche', "class": "form-control form-mediality"} }) }}
         </div>
         </div>
         <div class="col-md-12 row">

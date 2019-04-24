@@ -6,10 +6,6 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ order.id }}</td>
-            </tr>
-            <tr>
                 <th>Titre</th>
                 <td>{{ order.title }}</td>
             </tr>
@@ -18,11 +14,11 @@
                 <td>{{ order.description }}</td>
             </tr>
             <tr>
-                <th>Observation</th>
+                <th>Observations</th>
                 <td>{{ order.observation }}</td>
             </tr>
             <tr>
-                <th>Date de la création de la commande</th>
+                <th>Date de la création de la tâche</th>
                 <td>{{ order.dateRequest | date('d / m / Y') }}</td>
             </tr>
             <tr>
@@ -34,7 +30,7 @@
                 <td>{{ order.dateDiffusion | date('d / m / Y') }}</td>
             </tr>
             <tr>
-                <th>Journalistes concernée par la commande</th>
+                <th>Journalistes concernés par la tâche</th>
                 <td>{% for users in order.users %}
 
                         {{ users.firstname }} {{ users.lastname | upper }}
@@ -45,9 +41,9 @@
             </tr>
         </tbody>
     </table>
-    <a href="{{ path('orderEdit', {'id': order.id}) }}" class="btn btn-primary btn-block"><i class="fa fa-pencil-alt"></i></a>
+    <a href="{{ path('orderEdit', {'id': order.id}) }}" class="btn btn-primary btn-block"><i class="fa fa-pencil-alt"></i>&nbsp&nbsp&nbspModifier</a>
     <form class="delete" action="{{ path('orderDelete', {'id': order.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette commande?')">
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ order.id) }}">
-        <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash-alt"></i></button>
+        <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash-alt"></i>&nbsp&nbsp&nbspSupprimer</button>
     </form>
 {% endblock %}

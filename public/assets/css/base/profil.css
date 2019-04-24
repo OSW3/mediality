@@ -47,3 +47,20 @@ ul{
      text-transform:uppercase;
   }
 
+.btn-block 
+{
+    width: 45%;
+    margin: 50px auto;
+}
+
+.text-block 
+{
+    width: 45%;
+    padding-top: 30px;
+    margin: 50px auto;
+}
+
+.profile-img-settings
+{
+    margin: 50px;
+}

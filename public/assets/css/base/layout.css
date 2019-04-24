@@ -16,11 +16,6 @@
     position: fixed !important;
 }
 
-h1 {
-    font-family: 'Anton', sans-serif;
-    
-}
-
 .topbar
 {
     height: 62px;
@@ -665,7 +660,18 @@ a.search-icon {
     margin-top: 2rem;
     padding: 0 5px;
 }
-.workspace h1:first-child,
+
+.workspace-team h2
+{
+        font-family: 'Anton', sans-serif;
+}
+
+.workspace h1:first-child 
+{
+    font-family: 'Anton', sans-serif;
+    margin: 2rem 1rem 2rem .5rem;
+}
+
 .workspace h2:first-child,
 .workspace h3:first-child,
 .workspace h4:first-child,
@@ -675,9 +681,6 @@ a.search-icon {
     margin: .5rem;
 }
 
-.workspace h1:first-child {
-    margin: 2rem 1rem 2rem .5rem;
-}
 
 
 .workspace > section + section
