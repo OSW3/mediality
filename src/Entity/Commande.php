@@ -24,22 +24,26 @@ class Commande
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
+     * @Assert\Length(min=5, minMessage = "Le titre doit avoir au minimum 5 caractères",)
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
+     * @Assert\Length(min=10, minMessage = "La description doit avoir au minimum 10 caractères",)
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $nameApplicant;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
      */
     private $dateRequest;
 
