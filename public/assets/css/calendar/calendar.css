@@ -1,6 +1,30 @@
 .fc-toolbar h2{
     text-transform: capitalize;
 }
+.legend{
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    
+}
+
+.legend-order, .legend-event{
+    margin: 5px;
+    
+}
+
+.color-order{
+    background-color: #0CA0E8;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+}
+.color-event{
+    background-color: #EA4335;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+}
 
 @media screen and (max-width: 640px) {
     .fc-toolbar {
