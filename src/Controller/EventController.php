@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EventController extends AbstractController
 {
+
     /**
      * @Route("/event", name="event")
      * @param EvenementRepository $repository
@@ -107,4 +108,5 @@ class EventController extends AbstractController
             'editMode' => $event->getId() !== null
         ]);
     }
+
 }
