@@ -18,12 +18,12 @@ class EventFixtures extends Fixture
         $teams = ['Internet', 'Télévision', 'Radio', 'Journal'];
         $commandes = [];
 
-        for ($i=1; $i <= 10 ; $i++) { 
+        for ($i=1; $i <= 6 ; $i++) {
             $event = new Evenement();
-            $event->setTitle($faker->domainWord)
+            $event->setTitle($faker->catchPhrase)
                     ->setDescription($faker->sentence(16))
-                    ->setDateStart($faker->dateTimeBetween('-1 months'))
-                    ->setDateEnd($faker->dateTimeBetween('-1 months'))
+                    ->setDateStart($faker->dateTimeBetween('-10 days'))
+                    ->setDateEnd($faker->dateTimeBetween('-2 days'))
                     ->setCategory($faker->randomElement([
                         'Politique', 'Technologie', 'Science', 'Divers', 'Sport'
                     ]))
@@ -41,7 +41,7 @@ class EventFixtures extends Fixture
 
             $manager->persist($event);
 
-            for ($j=0; $j < 1; $j++) { 
+            for ($j=0; $j < 3; $j++) {
 
                 $now = new \DateTime();
                 $interval = $now->diff($event->getDateEnd());
@@ -50,7 +50,7 @@ class EventFixtures extends Fixture
 
                 $commande = new Commande();
                 $commande->setEvent($event)
-                         ->setTitle($faker->domainWord)
+                         ->setTitle($faker->catchPhrase)
                          ->setDescription($faker->sentence(16))
                          ->setNameApplicant($faker->userName)
                          ->setObservation($faker->sentence(46))

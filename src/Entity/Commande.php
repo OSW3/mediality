@@ -43,7 +43,6 @@ class Commande
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\DateTime()
      */
     private $dateRequest;
 
