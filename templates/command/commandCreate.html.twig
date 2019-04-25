@@ -58,14 +58,20 @@
         </div>
         </div>
     </div>
+    <div class="container emp-profile col-12 col-md-8 col-lg-6  mt-5">
+     <div class="row">
+    <div class="col-md-12">
     <div class="form-group">
-    <button type="submit" class='btn btn-primary btn-block'>
+    <button type="submit" class='btn btn-success btn-block'>
             {% if editMode %}
-                Enregistrer les modifications
+            <i class="fa fa-check"></i>&nbsp&nbsp Enregistrer les modifications
             {% else %}
-                Créer une commande
+            <i class="fa fa-check"></i>&nbsp&nbsp Créer une tâche
             {% endif %}
         </button>
+    </div>
+    </div>
+    </div>
     </div>
     {{ form_end(formCreateCommand) }}
 

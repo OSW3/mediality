@@ -106,7 +106,7 @@
     bottom: 0;
     left: 62px;
 
-    padding-bottom: 20px;
+    padding-bottom: 30px;
 
     overflow: auto !important;
     z-index: 1 !important;
@@ -690,4 +690,10 @@ a.home-icon {
 .workspace > section article + article
 {
     margin-top: 30px;
+}
+
+/* Login */
+
+.login {
+    margin: 50px auto;
 }
