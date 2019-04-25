@@ -64,3 +64,16 @@ ul{
 {
     margin: 50px;
 }
+
+.card-body .card-title{
+    text-align: center;
+}
+.error-dim{
+    position: relative;
+    margin-top: 150px;
+}
+.error-btn{
+    position: absolute;
+    right: 20px;
+    bottom: 30px;
+}
