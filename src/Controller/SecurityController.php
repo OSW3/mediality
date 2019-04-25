@@ -50,7 +50,7 @@ class SecurityController extends AbstractController
 
             $entityManager->flush();
 
-            $this->addFlash('success', 'Votre compte a bien été crée, vous pouvez vous connecter');
+            $this->addFlash('success', 'Vous pouvez vous connecter');
             
             return $this->redirectToRoute('login');
 

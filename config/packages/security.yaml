@@ -38,7 +38,6 @@ security:
         - { path: ^/event/create, roles: [ROLE_ADMIN] }
         - { path: ^/creer-commande, roles: [ROLE_ADMIN] }
         - { path: ^/commande/modifier/, roles: [ROLE_ADMIN]}
-        - { path: ^/settings/delete/, roles: [ROLE_ADMIN] }
         - { path: ^/order/delete/, roles: [ROLE_ADMIN] }
         - { path: ^/event/delete/, roles: [ROLE_ADMIN] }
         - { path: ^/event/edit, roles: [ROLE_ADMIN] }
