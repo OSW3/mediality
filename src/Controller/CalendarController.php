@@ -22,7 +22,7 @@ class CalendarController extends AbstractController
             $form->handleRequest($request);
 
             if ($form->isSubmitted()) {
-                // $form->getData() renvoie les données soumises
+                $form->getData(); 
                 dump($form->getData());
                 
             }
