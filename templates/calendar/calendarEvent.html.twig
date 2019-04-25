@@ -39,11 +39,18 @@
     </div>
     <div class="sidebar">
         <div class="sibar-content">
-            <div class="filter-box">
-               
+            <div class="filter-box cache">
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                <Label for="form_filterEvent">Masquer les événements</Label>
+                {{ form_widget(form.filterEvent) }}
+                <br>
+                <Label for="form_filterOrder">Masquer les tâches</Label>
+                {{ form_widget(form.filterOrder) }}
+                <br>
+	        	<button>Appliquer</button>
+	        {{ form_end(form) }}
             </div>
         </div>
-        
     </div>
         <div class=" spaceCalendar">
             {% include '@Calendar/calendar.html' %}
