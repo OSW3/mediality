@@ -33,7 +33,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label><strong>Nom</strong></label>
+                                    <label><i class="far fa-user"></i>&nbsp&nbsp&nbsp<strong>Nom</strong></label>
                                 </div>
                                 <div class="col-md-6">
                                     <p>{{app.user.firstname}} {{app.user.lastname}}</p>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label><strong>E-mail</strong></label>
+                                    <label><i class="far fa-envelope"></i>&nbsp&nbsp&nbsp<strong>E-mail</strong></label>
                                 </div>
                                 <div class="col-md-6">
                                     <p>{{app.user.email}}</p>
@@ -49,7 +49,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label><strong>Téléphone</strong></label>
+                                    <label><i class="fas fa-mobile-alt"></i>&nbsp&nbsp&nbsp<strong>Téléphone</strong></label>
                                 </div>
                                 <div class="col-md-6">
                                     <p>{{app.user.phone}}</p>
@@ -57,16 +57,18 @@
                             
                             </div>
                 </div>
+                 <div class="container emp-profile col-12 col-md-8 col-lg-6  mt-5">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <a class=" bg-primary btn btn-success btn-block" href="{{ path('userUpdate', {'id': app.user.id}) }}"><i class="fas fa-edit"></i>&nbsp&nbsp&nbspModifier</a>
+                                <div class="col-md-12">
+                                    <a class=" bg-primary btn btn-primary btn-block" href="{{ path('userUpdate', {'id': app.user.id}) }}"><i class="fas fa-edit"></i>&nbsp&nbsp Modifier</a>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <form class="delete" action="{{ path('userDelete', {'id': app.user.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer votre compte?')">
                                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ app.user.id) }}">
-                                            <button type="submit" class="bg-danger btn btn-danger btn-block"><i class="fas fa-trash-alt"></i>&nbsp&nbsp&nbspSupprimer</button>
+                                            <button type="submit" class="bg-danger btn btn-danger btn-block"><i class="fas fa-trash-alt"></i>&nbsp&nbsp Supprimer</button>
                                     </form>   
                                 </div>
+                            </div>
                             </div>
             
           

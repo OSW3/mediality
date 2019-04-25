@@ -22,7 +22,7 @@
             {{ form_widget(eventForm.description, {'attr': {'placeholder': 'Description de l\'événement.', "class": "form-control form-mediality"}}) }}
         </div>
         <div class="form-group">
-            <label for="event_form_category">Categorie :</label>
+            <label for="event_form_category">Catégorie :</label>
             {{ form_widget(eventForm.category, {'attr': {'placeholder': 'Categorie de l\'événement.', "class": "form-control form-mediality"} }) }}
         </div>
         <div class="form-group">
@@ -30,7 +30,7 @@
             {{ form_widget(eventForm.upload) }}
         </div>
         <div class="form-group">
-            <label for="event_form_comment">Commentaire :</label>
+            <label for="event_form_comment">Observations :</label>
             {{ form_widget(eventForm.comment, {'attr': {'placeholder': 'Commentaire sur l\'événement.', "class": "form-control form-mediality"}}) }}
         </div>
     </div>
@@ -76,19 +76,25 @@
             {{ form_widget(eventForm.mailContact, {'attr': {'placeholder': 'Description de l\'événement.', "class": "form-control form-mediality"}}) }}
         </div>
         <div class="form-group">
-            <label for="event_form_phoneContact">Télèphone du contact :</label>
+            <label for="event_form_phoneContact">Téléphone du contact :</label>
             {{ form_widget(eventForm.phoneContact, {'attr': {'placeholder': 'Titre de l\'événement.', "class": "form-control form-mediality"} }) }}
         </div>
         
     </div>
-    
-    <button class="btn btn-primary btn-block">
+
+    <div class="container emp-profile col-12 col-md-8 col-lg-6  mt-5">
+     <div class="row">
+    <div class="col-md-12">
+    <button class="btn btn-success btn-block">
         {% if editMode %}
-            Enregistrer les modifications
+        <i class="fa fa-check"></i>&nbsp&nbsp Enregistrer les modifications
         {% else %}
-            Créer un événement
+        <i class="fa fa-check"></i>&nbsp&nbsp Créer un événement
         {% endif %}
     </button>
+    </div>
+    </div>
+    </div>
     </div>
     {{ form_end(eventForm) }}
 </div>
