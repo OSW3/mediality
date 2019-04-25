@@ -77,19 +77,23 @@ class EventController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            if($event->getUpload()){
-                // Cherche le file qui a été uploadé
-                $file = $form->get('upload')->getData();
-                // Donne un nom à notre fichier
-                $fileName = md5(uniqid()).'.'.$file->guessExtension();
-                // Deplacer le fichier dans le dossier correspondant
-                $file->move(
-                    $this->getParameter('uploads_directory'),
-                    $fileName
-                );
+            if($event->getUpload()) {
+                try {
+                    // Cherche le file qui a été uploadé
+                    $file = $form->get('upload')->getData();
+                    // Donne un nom à notre fichier
+                    $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+                    // Deplacer le fichier dans le dossier correspondant
+                    $file->move(
+                        $this->getParameter('uploads_directory'),
+                        $fileName
+                    );
+                    // Enregistrer le nouveau nom dans la base de donnée
+                    $event->setUpload($fileName);
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
 
-                // Enregistrer le nouveau nom dans la base de donnée
-                $event->setUpload($fileName);
             }
             if ($event->getCategory() == ''){
                 $event->setCategory('Divers');
