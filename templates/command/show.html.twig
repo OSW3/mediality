@@ -49,7 +49,7 @@
     </div>
     <div class="col-12">
     <form class="delete" action="{{ path('orderDelete', {'id': order.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette commande?')">
-        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ order.id) }}">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
         <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash-alt"></i>&nbsp&nbsp Supprimer</button>
     </form>
     </div>

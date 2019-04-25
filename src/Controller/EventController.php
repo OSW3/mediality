@@ -51,7 +51,7 @@ class EventController extends AbstractController
      * @return Response
      */
     public function eventDelete(Evenement $event, Request $request, ObjectManager $manager) {
-        if($this->isCsrfTokenValid('delete'.$event->getId(), $request->get('_token'))){
+        if($this->isCsrfTokenValid('delete', $request->get('_token'))){
 
             $manager->remove($event);
             $manager->flush();

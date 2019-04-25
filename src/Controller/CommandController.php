@@ -82,7 +82,7 @@ class CommandController extends AbstractController
      * @return Response
      */
     public function eventDelete(Commande $order, Request $request, ObjectManager $manager) {
-        if($this->isCsrfTokenValid('delete'.$order->getId(), $request->get('_token'))){
+        if($this->isCsrfTokenValid('delete', $request->get('_token'))){
             $manager->remove($order);
             $manager->flush();
         }
