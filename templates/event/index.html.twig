@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Event{% endblock %}
+{% block title %}: Créer un évènement {% endblock %}
 
 {% block body %}
 
@@ -26,7 +26,7 @@
             {{ form_widget(eventForm.category, {'attr': {'placeholder': 'Catégorie de l\'événement', "class": "form-control form-mediality"} }) }}
         </div>
         <div class="form-group">
-            <label for="event_form_upload">Pièce jointe :</label>
+            <label for="event_form_upload">Pièce jointe (JPG, JPEG, PNG, GIF, PDF, X-PDF) :</label>
             {{ form_widget(eventForm.upload) }}
         </div>
         <div class="form-group">
