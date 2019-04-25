@@ -2,15 +2,16 @@
 
 {% form_theme formRegister 'bootstrap_4_layout.html.twig' %}
 
-{% block title %}Hello SecurityController!{% endblock %}
+{% block title %} Mon compte{% endblock %}
 
 {% block body %}
 <div class="container">
     {{ form_start(formRegister) }}
         {{ form_widget(formRegister, {'attr': {'class': 'task_field'}}) }}
-        <button type="submit" class='btn btn-primary btn-block'>
+        
+        <button type="submit" class='btn btn-success btn-block' >
             {% if updateMode %}
-            Enregistrer les modifications
+            <i class="fas fa-check"></i>&nbsp&nbsp Enregistrer les modifications
             {% else %}
             Inscription
             {% endif %}

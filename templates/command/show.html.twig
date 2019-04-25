@@ -2,7 +2,7 @@
 {% block title %}Commande{% endblock %}
 
 {% block body %}
-    <h1>Commande pour l'évenement : {{ order.event.title}}</h1>
+    <h1>Détails de la tâche : {{ order.event.title}}</h1>
     <table class="table">
         <tbody>
             <tr>
@@ -41,9 +41,16 @@
             </tr>
         </tbody>
     </table>
-    <a href="{{ path('orderEdit', {'id': order.id}) }}" class="btn btn-primary btn-block"><i class="fa fa-pencil-alt"></i>&nbsp&nbsp&nbspModifier</a>
+     <div class="container emp-profile col-12 col-md-8 col-lg-6  mt-5">
+    <div class="row">
+    <div class="col-12">
+    <a href="{{ path('orderEdit', {'id': order.id}) }}" class="btn btn-primary btn-block"><i class="fa fa-pencil-alt"></i>&nbsp&nbsp Modifier</a>
+    </div>
+    <div class="col-12">
     <form class="delete" action="{{ path('orderDelete', {'id': order.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cette commande?')">
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ order.id) }}">
-        <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash-alt"></i>&nbsp&nbsp&nbspSupprimer</button>
+        <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash-alt"></i>&nbsp&nbsp Supprimer</button>
     </form>
+    </div>
+    </div>
 {% endblock %}
