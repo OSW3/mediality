@@ -85,7 +85,7 @@ class Evenement
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\File(
-     *     maxSize="5242880",
+     *     maxSize="6M",
  *         mimeTypes = {
      *          "image/png",
      *          "image/jpeg",
