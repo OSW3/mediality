@@ -4,25 +4,31 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\HttpFoundation\Request;
 
 class CalendarController extends AbstractController
 {
     /**
      * @Route("/calendar-event", name="calendar_event")
      */
-    public function calendarEvent()
+    public function calendarEvent(Request $request)
     {
+        $form = $this->createFormBuilder()
+            ->add('filterEvent', CheckboxType::class)
+            ->add('filterOrder', CheckboxType::class)
+            ->getForm();
+
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted()) {
+                $form->getData(); 
+                dump($form->getData());
+                
+            }
         return $this->render('calendar/calendarEvent.html.twig', [
-            'controller_name' => 'CalendarController',
+                'form' => $form->createView(),
         ]);
     }
-    /**
-     * @Route("/calendar-manager", name="calendar_manager")
-     */
-     public function calendarManager()
-     {
-         return $this->render('calendar/calendarManager.html.twig', [
-             'controller_name' => 'CalendarController',
-         ]);
-     }
+    
 }

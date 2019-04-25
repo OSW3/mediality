@@ -24,11 +24,6 @@ class Team
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $role;
-
-    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
@@ -56,18 +51,6 @@ class Team
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(string $role): self
-    {
-        $this->role = $role;
 
         return $this;
     }

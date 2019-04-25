@@ -68,8 +68,7 @@ class EventFixtures extends Fixture
         for ($k=0; $k <= 3 ; $k++) { 
                     $team = new Team();
                     $team->setName($teams[$k])
-                        ->setRole("Pizza")
-                        ->setDescription($faker->sentence(46));
+                    ->setDescription($faker->sentence(46));
 
                     $manager->persist($team);
 

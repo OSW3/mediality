@@ -7,15 +7,52 @@
 {% block body %}
 <div class="container">
     {{ form_start(formRegister) }}
-        {{ form_widget(formRegister, {'attr': {'class': 'task_field'}}) }}
-        
-        <button type="submit" class='btn btn-success btn-block' >
+    <div class="row"> 
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="event_form_title">Prénom :</label>
+                {{ form_widget(formRegister.firstname, {'attr': {'class': 'task_field'}}) }}
+            </div>
+        </div>  
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="event_form_title">Nom :</label>
+                {{ form_widget(formRegister.lastname, {'attr': {'class': 'task_field'}}) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="event_form_title">E-mail :</label>
+                {{ form_widget(formRegister.email, {'attr': {'class': 'task_field'}}) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="event_form_title">Téléphone :</label>
+                {{ form_widget(formRegister.phone, {'attr': {'class': 'task_field'}}) }}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                {{ form_widget(formRegister.password, {'attr': {'class': 'task_field'}}) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="event_form_title">Equipe :</label>
+                {{ form_widget(formRegister.team, {'attr': {'class': 'task_field'}}) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <button type="submit" class='btn btn-success btn-block' >
             {% if updateMode %}
             <i class="fas fa-check"></i>&nbsp&nbsp Enregistrer les modifications
             {% else %}
             Inscription
             {% endif %}
-        </button>
+            </button>
+        </div>
     {{ form_end(formRegister) }}
+    </div>
 </div>
 {% endblock %}

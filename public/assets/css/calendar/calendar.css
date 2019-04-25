@@ -1,3 +1,45 @@
 .fc-toolbar h2{
     text-transform: capitalize;
 }
+.legend{
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    
+}
+
+.legend-order, .legend-event{
+    margin: 5px;
+    
+}
+.color-order{
+    background-color: #0CA0E8;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+}
+.color-event{
+    background-color: #EA4335;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+}
+.sibar-content{
+    position: absolute;
+    top: 100px;
+    left: 20px;
+}
+.filter-box{
+    position: relative;
+    display: inline;
+}
+
+.visible { visibility:visible; }
+.cache  { visibility:hidden; }
+
+@media screen and (max-width: 640px) {
+    .fc-toolbar {
+        width: 100%;
+        display: inline-block;
+    }
+}
