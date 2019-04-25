@@ -9,11 +9,22 @@ use App\Entity\Commande;
 use App\Entity\Team;
 use App\Entity\Users;
 use Faker\Factory;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class EventFixtures extends Fixture
 {
+    private $encoder;
+
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        $this->encoder = $encoder;
+    }
+
+
+
     public function load(ObjectManager $manager)
     {
+
         $faker = Factory::create('fr_FR');
         $teams = ['Internet', 'Télévision', 'Radio', 'Journal'];
         $commandes = [];
@@ -74,12 +85,13 @@ class EventFixtures extends Fixture
 
                     for ($l=0; $l < 6; $l++) { 
                         $user = new Users();
+                        $password = $this->encoder->encodePassword($user, 'testtest');
                         $user->setFirstName($faker->firstName)
                              ->setLastName($faker->lastName)
                              ->setEmail($faker->freeEmail)
                              ->setPhone($faker->phoneNumber)
-                             ->setStatus('Journaliste')
-                             ->setPassword('testtest')
+                             ->setStatus('ROLE_USER')
+                             ->setPassword($password)
                              ->addTeam($team);
                              foreach ($commandes as $commande) {
                                  $user->addOrder($commande);
