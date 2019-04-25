@@ -54,17 +54,20 @@
         {% endif %}
         </tbody>
 
-    </table> 
+    </table>
+    {% if is_granted('ROLE_ADMIN') %}
     <div class="container emp-profile col-12 col-md-8 col-lg-6  mt-5">
-    <div class="row">
-    <div class="col-md-12">
-    <a href="{{ path('eventEdit', {'id': event.id}) }}" class="btn btn-primary btn-block"><i class="fa fa-pencil-alt"></i>&nbsp&nbsp Modifier</a>
+        <div class="row">
+            <div class="col-md-12">
+                 <a href="{{ path('eventEdit', {'id': event.id}) }}" class="btn btn-primary btn-block"><i class="fa fa-pencil-alt"></i>&nbsp&nbsp Modifier</a>
+            </div>
+            <div class="col-12">
+                <form class="delete" action="{{ path('eventDelete', {'id': event.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cet évenement?')">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
+                    <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash-alt"></i>&nbsp&nbsp Supprimer</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="col-12">
-    <form class="delete" action="{{ path('eventDelete', {'id': event.id}) }}" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer cet évenement?')">
-        <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
-        <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash-alt"></i>&nbsp&nbsp Supprimer</button>
-    </form>
-    </div>
-    </div>
+    {% endif %}
 {% endblock %}
