@@ -4,8 +4,13 @@
 .legend{
     position: absolute;
     top: 5px;
-    right: 20px;
+    right: 26px;
+    padding-top: 6px;
     
+}   
+
+.legend-content {
+    padding-left: 8px;
 }
 
 .legend-order, .legend-event{
@@ -26,7 +31,7 @@
 }
 .sibar-content{
     position: absolute;
-    top: 100px;
+    top: 113px;
     left: 20px;
 }
 .filter-box{

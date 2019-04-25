@@ -7,7 +7,7 @@
 {% block body %}
 <div class="container">
     {{ form_start(formRegister) }}
-    <div class="row"> 
+    <div class="row login">  
         <div class="col-md-6">
             <div class="form-group">
                 <label for="event_form_title">Prénom :</label>
@@ -48,7 +48,7 @@
             {% if updateMode %}
             <i class="fas fa-check"></i>&nbsp&nbsp Enregistrer les modifications
             {% else %}
-            Inscription
+            <i class="fas fa-check"></i>&nbsp&nbsp Inscription
             {% endif %}
             </button>
         </div>
